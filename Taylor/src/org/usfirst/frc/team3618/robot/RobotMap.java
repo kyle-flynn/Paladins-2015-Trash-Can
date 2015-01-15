@@ -16,6 +16,6 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
-	public static boolean IS_JAMES_A_BAD_KID = true;
+	
 	
 }
