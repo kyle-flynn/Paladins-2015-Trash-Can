@@ -8,11 +8,11 @@ import org.usfirst.frc.team3618.robot.Robot;
 /**
  *
  */
-public class ExampleCommand extends Command {
+public class DriveCommand extends Command {
 
-    public ExampleCommand() {
+    public DriveCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.exampleSubsystem);
+        requires(Robot.chassisSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -21,6 +21,7 @@ public class ExampleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.chassisSubsystem.DiveMe(Robot.oi.stick);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,10 +31,12 @@ public class ExampleCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.chassisSubsystem.StopMe();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.chassisSubsystem.StopMe();
     }
 }
