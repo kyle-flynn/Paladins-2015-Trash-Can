@@ -1,0 +1,15 @@
+You can remember your username for pushing:
+  Start -> Git Bash
+  cd Paladins-2015-Trash-Can
+  git config --get remote.origin.url
+  copy the value using:
+  - [upper left menu click] -> Edit -> Mark
+  - select the web site address
+  - press enter (copies)
+  - use it to paste at the end of the following command, adding your UID
+    before the '@' symbol:
+  git config remote.origin.url https://wdross@github.com/killjoy64/Paladins-2015-Trash-Can
+
+
+All future 'Commit and Push' commands will have your UID filled out,
+only needing a password.
