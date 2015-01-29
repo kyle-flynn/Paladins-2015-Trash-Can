@@ -16,8 +16,6 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
-	public static boolean KYLE_IS_STUPID = true;
-	
 	public static int SPIN_BUTTON = 2;
 	
 }
