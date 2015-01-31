@@ -18,6 +18,18 @@ public class ChassisSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    public void DriveMe (Joystick stick) { 
+    	myRobotDrive.mecanumDrive_Cartesian(stick.getX(),stick.getY(),stick.getZ(),0);
+    	
+    }
+    public void StopMe () {
+    	myRobotDrive.drive(0, 0);
+    }
+      	
+    	
+    	
+    	
+    
     public ChassisSubsystem()
     {
     	//Empty constructor
