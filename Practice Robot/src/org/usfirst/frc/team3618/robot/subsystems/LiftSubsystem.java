@@ -14,15 +14,15 @@ public class LiftSubsystem extends Subsystem {
 //I used liftUp, stopLiftingUp, liftDown, and stopLiftingDown	
 	
     // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-
+    // here. Call these from Commands
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     
     public void liftUp(double output){
-    	leftLiftTalon.set(output);
+    	leftLiftTalon.set(-output);
     	rightLiftTalon.set(output);
     }
     
@@ -32,7 +32,7 @@ public class LiftSubsystem extends Subsystem {
     }
     
     public void liftDown(double output){
-    	leftLiftTalon.set(output);
+    	leftLiftTalon.set(-output);
     	rightLiftTalon.set(output);
     }
     
