@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ChassisSubsystem extends Subsystem {
-	RobotDrive 	myRobotDrive =new RobotDrive (0,1,3,4);
+	RobotDrive 	myRobotDrive =new RobotDrive (0,1,5,4);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
