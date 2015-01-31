@@ -1,6 +1,5 @@
 package org.usfirst.frc.team3618.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -22,20 +21,24 @@ public class LiftSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void liftUp(Joystick stick){
-    	
+    public void liftUp(double output){
+    	leftLiftTalon.set(output);
+    	rightLiftTalon.set(output);
     }
     
-    public void stopLiftingUp(Joystick stick){
-    	
+    public void stopLiftingUp(){
+    	leftLiftTalon.set(0);
+    	rightLiftTalon.set(0);
     }
     
-    public void liftDown(Joystick stick){
-    	
+    public void liftDown(double output){
+    	leftLiftTalon.set(output);
+    	rightLiftTalon.set(output);
     }
     
-    public void stopLiftingDown(Joystick stick){
-    	
+    public void stopLiftingDown(){
+    	leftLiftTalon.set(0);
+    	rightLiftTalon.set(0);
     }
 }
 
