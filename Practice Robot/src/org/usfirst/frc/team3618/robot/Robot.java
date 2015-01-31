@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team3618.robot.commands.DriveCommand;
-import org.usfirst.frc.team3618.robot.subsystems.ChassisSystem;
+import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -17,7 +17,7 @@ import org.usfirst.frc.team3618.robot.subsystems.ChassisSystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ChassisSystem exampleSubsystem = new ChassisSystem();
+	public static final ChassisSubsystem chassisSubsystem = new ChassisSubsystem();
 	public static OI oi;
 
     Command autonomousCommand;
