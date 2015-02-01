@@ -18,4 +18,17 @@ public class RobotMap {
 	
 	public static int SPIN_BUTTON = 2;
 	
+	public static int LIFT_UP_BUTTON;
+	public static int LIFT_DOWN_BUTTON;
+	
+	
+	public static int LEFT_FRONT_DRIVE_MOTOR = 0;
+	public static int LEFT_BACK_DRIVE_MOTOR = 1;
+	public static int RIGHT_FRONT_DRIVE_MOTOR = 2;
+	public static int RIGHT_BACK_DRIVE_MOTOR = 3;
+	
+	public static int LEFT_LIFT_MOTOR;
+	public static int RIGHT_LIFT_MOTOR;
+	
+	
 }

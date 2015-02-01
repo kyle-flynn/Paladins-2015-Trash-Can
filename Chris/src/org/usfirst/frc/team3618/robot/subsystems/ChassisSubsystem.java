@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team3618.robot.subsystems;
 
+import org.usfirst.frc.team3618.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -13,7 +15,10 @@ public class ChassisSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	RobotDrive drive = new RobotDrive(0,1,2,3); 
+	RobotDrive drive = new RobotDrive(RobotMap.LEFT_FRONT_DRIVE_MOTOR, 
+									  RobotMap.LEFT_BACK_DRIVE_MOTOR,
+									  RobotMap.RIGHT_FRONT_DRIVE_MOTOR,
+									  RobotMap.RIGHT_BACK_DRIVE_MOTOR);
 	
 	public ChassisSubsystem() {
 		
