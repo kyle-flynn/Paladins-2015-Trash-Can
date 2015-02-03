@@ -1,19 +1,15 @@
 package org.usfirst.frc.team3618.robot;
 
-
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Joystick.ButtonType;
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team3618.robot.commands.DriveCommand;
-import org.usfirst.frc.team3618.robot.commands.LiftCommand;
+import org.usfirst.frc.team3618.robot.commands.DriveCommand1;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI {
+public class OI1 {
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -40,15 +36,8 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
-	public static Joystick driveStick = new Joystick(0);//Weston's joystick, make sure it's in zero spot
-	public static Joystick bigStick = new Joystick(1);//Drew's joystick, goes in one spot
-	
-	public static int liftUpButton = RobotMap.LIFT_UP_BUTTON;
-	public static int liftDownButton = RobotMap.LIFT_UP_BUTTON;
-	public static int triggerLiftOn = RobotMap.TRIGGER_LIFT_ON;
-	
-	public OI() {
-	}
+	public static Joystick stick=new Joystick (1);
 	
 }
+
 

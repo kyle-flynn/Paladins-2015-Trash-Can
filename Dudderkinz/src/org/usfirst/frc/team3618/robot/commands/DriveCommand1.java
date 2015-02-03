@@ -3,17 +3,16 @@ package org.usfirst.frc.team3618.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc.team3618.robot.OI;
-import org.usfirst.frc.team3618.robot.Robot;
+import org.usfirst.frc.team3618.robot.Robot1;
 
 /**
  *
  */
-public class DriveCommand extends Command {
+public class DriveCommand1 extends Command {
 
-    public DriveCommand() {
+    public DriveCommand1() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.chassisSubsystem);
+        requires(Robot1.chassisSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +21,7 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chassisSubsystem.driveMe(OI.driveStick);
+    	Robot1.chassisSubsystem.DriveMe(Robot1.oi.stick);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,12 +31,12 @@ public class DriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.chassisSubsystem.stopRobot();
+    	Robot1.chassisSubsystem.StopMe();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    	Robot1.chassisSubsystem.StopMe();
     }
 }

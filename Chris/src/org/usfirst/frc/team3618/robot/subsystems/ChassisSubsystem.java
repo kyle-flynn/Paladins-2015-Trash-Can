@@ -6,7 +6,6 @@ import org.usfirst.frc.team3618.robot.RobotMap;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.buttons.*;
 /**
  *
  */
@@ -19,6 +18,7 @@ public class ChassisSubsystem extends Subsystem {
 									  RobotMap.LEFT_BACK_DRIVE_MOTOR,
 									  RobotMap.RIGHT_FRONT_DRIVE_MOTOR,
 									  RobotMap.RIGHT_BACK_DRIVE_MOTOR);
+	
 	
 	public ChassisSubsystem() {
 		
@@ -36,16 +36,6 @@ public class ChassisSubsystem extends Subsystem {
     public void stopRobot()
     {
     	drive.stopMotor();
-    }
-    
-    public void spinRobot(boolean clockwise)
-    {
-    	if(clockwise){
-    		drive.setLeftRightMotorOutputs(.5, -.5);
-    	}
-    	else {
-    		drive.setLeftRightMotorOutputs(-.5,.5);
-    	}
     }
     
 }

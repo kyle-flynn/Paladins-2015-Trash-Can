@@ -5,9 +5,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team3618.robot.commands.DriveCommand;
-import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
-import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team3618.robot.commands.DriveCommand1;
+import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem1;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -16,19 +15,21 @@ import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {
+public class Robot1 extends IterativeRobot {
 
-	public static final ChassisSubsystem chassisSubsystem = new ChassisSubsystem();
-	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
-	public static OI oi;
+	public static final ChassisSubsystem1 chassisSubsystem = new ChassisSubsystem1();
+	public static OI1 oi;
+
+    
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+		oi = new OI1();
         // instantiate the command used for the autonomous period
+       
     }
 	
 	public void disabledPeriodic() {
@@ -37,6 +38,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+        
     }
 
     /**
@@ -51,7 +53,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-    }
+           }
 
     /**
      * This function is called when the disabled button is hit.
@@ -66,8 +68,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        chassisSubsystem.driveMe(OI.driveStick);
-        liftSubsystem.operateLift(OI.bigStick);
     }
     
     /**
