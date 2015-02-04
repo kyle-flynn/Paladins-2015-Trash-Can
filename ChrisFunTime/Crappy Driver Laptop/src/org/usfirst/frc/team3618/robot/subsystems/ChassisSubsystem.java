@@ -14,11 +14,11 @@ public class ChassisSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	RobotDrive drive = new RobotDrive(RobotMap.LEFT_FRONT_DRIVE_MOTOR, 
+	public RobotDrive drive = new RobotDrive(RobotMap.LEFT_FRONT_DRIVE_MOTOR, 
 									  RobotMap.LEFT_BACK_DRIVE_MOTOR,
 									  RobotMap.RIGHT_FRONT_DRIVE_MOTOR,
 									  RobotMap.RIGHT_BACK_DRIVE_MOTOR);
-	
+	//Robot drive should NOT be public, just for testing
 	
 	public ChassisSubsystem() {
 		

@@ -2,7 +2,6 @@ const int switchGround = P2_5;//Black wire
 
 void setup() {
   Serial.begin(9600);
-  
   pinMode(switchGround, INPUT_PULLUP);
   
   pinMode(RED_LED, OUTPUT);
@@ -19,5 +18,6 @@ void loop() {
     digitalWrite(GREEN_LED, HIGH);
     digitalWrite(RED_LED, LOW);
   }
+  Serial.println("Hello");
   delay(100);
 }

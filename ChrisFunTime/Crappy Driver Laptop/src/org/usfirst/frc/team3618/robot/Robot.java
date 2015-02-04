@@ -73,6 +73,7 @@ public class Robot extends IterativeRobot {
         
         Joystick launchPad = OI.launchPad;
         if(launchPad.getRawButton(OI.BadassSwitch)){
+        	chassisSubsystem.drive.mecanumDrive_Cartesian(.5, -.5, 0.0, 0.0);
         	System.out.println("Switch hit.");
         }
         if(launchPad.getRawButton(OI.BigBlue)){
