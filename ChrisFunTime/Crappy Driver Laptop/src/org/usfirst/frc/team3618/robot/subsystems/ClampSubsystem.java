@@ -14,7 +14,7 @@ public class ClampSubsystem extends Subsystem{
 	Solenoid rightPullSolenoid;
 	Solenoid rightPushSolenoid;
 	
-	boolean clampUp = false;
+	boolean clampUp;
 	
 	public ClampSubsystem()
 	{
@@ -28,6 +28,7 @@ public class ClampSubsystem extends Subsystem{
 	public void initDefaultCommand()
 	{
 		lowerClamp();
+		clampUp = false;
 	}
 	
 	public void liftClamp()

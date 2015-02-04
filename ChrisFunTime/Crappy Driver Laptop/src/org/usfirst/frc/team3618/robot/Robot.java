@@ -2,10 +2,10 @@
 package org.usfirst.frc.team3618.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team3618.robot.commands.DriveCommand;
+
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.ClampSubsystem;
@@ -70,6 +70,25 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         chassisSubsystem.driveMe(OI.driveStick);
         liftSubsystem.operateLift(OI.bigStick);
+        
+        Joystick launchPad = OI.launchPad;
+        if(launchPad.getRawButton(OI.BadassSwitch)){
+        	System.out.println("Switch hit.");
+        }
+        if(launchPad.getRawButton(OI.BigBlue)){
+        	System.out.println("Big Blue.");
+        }
+        if(launchPad.getRawButton(OI.BigWhite)){
+        	System.out.println("Big White.");
+        }
+        if(launchPad.getRawButton(OI.TopButton)){
+        	System.out.println("Top Button.");
+        }
+        if(launchPad.getRawButton(OI.BottomButton)){
+        	System.out.println("Bottom Button.");
+        }
+        
+        
     }
     
     /**

@@ -2,12 +2,6 @@ package org.usfirst.frc.team3618.robot;
 
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Joystick.ButtonType;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
-import org.usfirst.frc.team3618.robot.commands.DriveCommand;
-import org.usfirst.frc.team3618.robot.commands.LiftCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -42,6 +36,17 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	public static Joystick driveStick = new Joystick(0);//Weston's joystick, make sure it's in zero spot
 	public static Joystick bigStick = new Joystick(1);//Drew's joystick, goes in one spot
+	public static Joystick launchPad = new Joystick(2);//The buttons affiliated with the launchpad
+	
+	public static int BadassSwitch = 8;
+	public static int BigBlue = 10;
+	public static int BigWhite = 11;
+	public static int TopButton = 6;
+	public static int BottomButton = 7;
+	
+	
+	
+	
 	
 	public static int liftUpButton = RobotMap.LIFT_UP_BUTTON;
 	public static int liftDownButton = RobotMap.LIFT_UP_BUTTON;
