@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team3618.robot.commands.DriveCommand;
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team3618.robot.subsystems.TotePusherSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.VisionSubsystem;
 
 /**
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static final ChassisSubsystem chassisSubsystem = new ChassisSubsystem();
 	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
 	public static final VisionSubsystem visionSubsystem = new VisionSubsystem();
+	public static final TotePusherSubsystem totePusherSubsystem = new TotePusherSubsystem();
 	public static OI oi;
 
     /**
