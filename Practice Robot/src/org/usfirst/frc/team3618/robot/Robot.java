@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team3618.robot.commands.DriveCommand;
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team3618.robot.subsystems.TotePusherOutSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.VisionSubsystem;
 
 /**
@@ -23,6 +24,8 @@ public class Robot extends IterativeRobot {
 	public static final ChassisSubsystem chassisSubsystem = new ChassisSubsystem();
 	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
 	public static final VisionSubsystem visionSubsystem = new VisionSubsystem();
+	public static final TotePusherOutSubsystem totePusherOutSubsystem = new TotePusherOutSubsystem();
+	public static final TotePusherInSubsystem totePusherInSubsystem = new TotePusherInSubsystem();
 	public static OI oi;
 
     /**
@@ -32,7 +35,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         // instantiate the command used for the autonomous period
-       
+		
+       visionSubsystem.init();
     }
 	
 	public void disabledPeriodic() {
