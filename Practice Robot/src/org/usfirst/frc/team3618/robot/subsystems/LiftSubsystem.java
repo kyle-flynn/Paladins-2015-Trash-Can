@@ -40,5 +40,38 @@ public class LiftSubsystem extends Subsystem {
     	leftLiftTalon.set(0);
     	rightLiftTalon.set(0);
     }
+    
+    public void leftLiftUp(double output){
+    	leftLiftTalon.set(-output);
+    }
+    
+    public void stopLiftingLeftUp(){
+    	leftLiftTalon.set(0);
+    }
+    
+    public void leftLiftDown(double output){
+    	leftLiftTalon.set(-output);
+    }
+    
+    public void stopLiftingLeftDown(){
+    	leftLiftTalon.set(0);
+    }
+    
+    public void rightLiftUp(double output){
+    	rightLiftTalon.set(output);
+    }
+    
+    public void stopLiftingRightUp(){
+    	rightLiftTalon.set(0);
+    }
+    
+    public void rightLiftDown(double output){
+    	rightLiftTalon.set(output);
+    }
+    
+    public void stopLiftingRightDown(){
+    	rightLiftTalon.set(0);
+    }
+    	
 }
 
