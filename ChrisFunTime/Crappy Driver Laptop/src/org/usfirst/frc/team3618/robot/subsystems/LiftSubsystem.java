@@ -16,7 +16,6 @@ public class LiftSubsystem extends Subsystem{
 	Clockwise is a positive value to the talon, counterclockwise negative
 	*/
 	
-	
 	private Talon leftTalon;
 	private Talon rightTalon;
 	
