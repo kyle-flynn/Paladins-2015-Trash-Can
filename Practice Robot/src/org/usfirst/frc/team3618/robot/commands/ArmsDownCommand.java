@@ -17,7 +17,7 @@ public class ArmsDownCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.liftSubsystem.LowerArms();
+    	Robot.liftSubsystem.moveArmsDown();
     }
 
     // Called repeatedly when this Command is scheduled to run
