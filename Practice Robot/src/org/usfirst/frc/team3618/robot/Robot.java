@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team3618.robot.commands.DriveCommand;
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team3618.robot.subsystems.VisionSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,9 +22,8 @@ public class Robot extends IterativeRobot {
 
 	public static final ChassisSubsystem chassisSubsystem = new ChassisSubsystem();
 	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
+	public static final VisionSubsystem visionSubsystem = new VisionSubsystem();
 	public static OI oi;
-
-   
 
     /**
      * This function is run when the robot is first started up and should be
