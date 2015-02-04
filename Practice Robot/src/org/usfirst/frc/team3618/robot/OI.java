@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3618.robot;
 
+import org.usfirst.frc.team3618.robot.commands.ArmsDownCommand;
+import org.usfirst.frc.team3618.robot.commands.ArmsUpCommand;
 import org.usfirst.frc.team3618.robot.commands.LeftLiftDownCommand;
 import org.usfirst.frc.team3618.robot.commands.LeftLiftUpCommand;
 import org.usfirst.frc.team3618.robot.commands.LiftDownCommand;
@@ -29,6 +31,8 @@ public class OI {
 	public Button leftLiftDown = new JoystickButton(stick, 8);
 	public Button pushIn = new JoystickButton(stick, 9);
 	public Button pushOut = new JoystickButton(stick, 10);
+	public Button armsDown = new JoystickButton(stick, 50);
+	public Button armsUp = new JoystickButton(stick, 51);
 	
 public OI(){
 	liftUp.whileHeld(new LiftUpCommand());
@@ -39,6 +43,8 @@ public OI(){
 	leftLiftDown.whileHeld(new LeftLiftDownCommand());
 	pushIn.whenPressed(new TotePusherInCommand());
 	pushOut.whenPressed(new TotePusherOutCommand());
+	armsDown.whenPressed(new ArmsDownCommand());
+	armsUp.whenPressed(new ArmsUpCommand());
 	
 	
 }
