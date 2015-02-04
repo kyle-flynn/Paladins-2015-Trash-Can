@@ -31,7 +31,7 @@ public class TotePusherInCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.totePusherSubsystem.stopPushingIn();
+    	
     }
 
     // Called when another command which requires one or more of the same
@@ -40,3 +40,4 @@ public class TotePusherInCommand extends Command {
     	end();
     }
 }
+
