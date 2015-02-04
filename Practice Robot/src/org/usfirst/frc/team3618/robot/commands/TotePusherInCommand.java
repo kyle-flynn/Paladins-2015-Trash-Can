@@ -12,7 +12,7 @@ public class TotePusherInCommand extends Command {
     public TotePusherInCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.totePusherInSubsystem);
+    	requires(Robot.totePusherSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class TotePusherInCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.totePusherInSubsystem.pushIn();
+    	Robot.totePusherSubsystem.pushIn();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +31,7 @@ public class TotePusherInCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.totePusherInSubsystem.stopPushingIn();
+    	Robot.totePusherSubsystem.stopPushingIn();
     }
 
     // Called when another command which requires one or more of the same
