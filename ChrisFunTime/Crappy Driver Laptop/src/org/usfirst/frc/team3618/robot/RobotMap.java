@@ -23,14 +23,20 @@ public class RobotMap {
 	public static int LEFT_LIFT_TALON_PORT = 3;
 	public static int RIGHT_LIFT_TALON_PORT = 6;//They are like this on the practice robot
 	
+	public static int LEFT_TOP_LIMIT_SWITCH;
+	public static int RIGHT_TOP_LIMIT_SWITCH;
+	public static int LEFT_BOTTOM_LIMIT_SWITCH;
+	public static int RIGHT_BOTTOM_LIMIT_SWITCH;
 	
+	
+	public static int OPERATE_PUSHER = 3;
 	public static int CLAMP_UP_DOWN_BUTTON = 2;//Button to lift/lower the clamps
 	public static int LEFT_PULL_SOLENOID = 0;//Pulls the piston back, to deply clamp
 	public static int LEFT_PUSH_SOLENOID = 1;//Pushes piston out, lowers clamp
 	public static int RIGHT_PULL_SOLENOID = 2;//These need to be wired in this manner
 	public static int RIGHT_PUSH_SOLENOID = 3;
 	
-	
+	public static int PUSHER_SOLENOID = 4;
 	
 	public static int LEFT_FRONT_DRIVE_MOTOR = 0;
 	public static int LEFT_BACK_DRIVE_MOTOR = 1;
@@ -38,5 +44,5 @@ public class RobotMap {
 	public static int RIGHT_BACK_DRIVE_MOTOR = 4;
 	//These are how they are labeled on the practice robot
 	
-	
+	public static int DRIVE_PRECISE = 1;
 }

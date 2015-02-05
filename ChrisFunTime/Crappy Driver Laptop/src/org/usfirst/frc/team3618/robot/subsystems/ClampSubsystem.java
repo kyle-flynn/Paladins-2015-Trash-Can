@@ -19,16 +19,16 @@ public class ClampSubsystem extends Subsystem{
 	public ClampSubsystem()
 	{
 		airCompressor = new Compressor();
+		airCompressor.start();
 		leftPullSolenoid = new Solenoid(OI.leftPullSolenoidPort);
 		leftPushSolenoid = new Solenoid(OI.leftPushSolenoidPort);
 		rightPullSolenoid = new Solenoid(OI.rightPullSolenoidPort);
 		rightPushSolenoid = new Solenoid(OI.rightPushSolenoidPort);
 	}
 	
-	public void initDefaultCommand()
+	public void initDefaultCommand()//startup
 	{
 		lowerClamp();
-		clampUp = false;
 	}
 	
 	public void liftClamp()
@@ -48,14 +48,14 @@ public class ClampSubsystem extends Subsystem{
 		leftPushSolenoid.set(true);
 		
 		rightPullSolenoid.set(false);
-		rightPullSolenoid.set(true);
+		rightPushSolenoid.set(true);
 		
 		clampUp = false;
 	}
 	
 	public void operateClamp()
 	{
-		if(OI.bigStick.getRawButton(OI.clampButton)){//If Drew presses clamp button
+		if(OI.bigStick.getRawButton(OI.clampButton)){//If Drew presses clamp button, 2
 			if(clampUp){
 				lowerClamp();
 			}else{//clamp is down

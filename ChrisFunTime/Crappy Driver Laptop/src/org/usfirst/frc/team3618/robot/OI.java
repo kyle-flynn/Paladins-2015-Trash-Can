@@ -45,18 +45,25 @@ public class OI {
 	public static int BottomButton = 7;
 	
 	
-	
+	public static int drivePrecise = RobotMap.DRIVE_PRECISE;
 	
 	
 	public static int liftUpButton = RobotMap.LIFT_UP_BUTTON;
 	public static int liftDownButton = RobotMap.LIFT_UP_BUTTON;
 	public static int triggerLiftOn = RobotMap.TRIGGER_LIFT_ON;
+	public static int leftTopSwitch = RobotMap.LEFT_TOP_LIMIT_SWITCH;
+	public static int rightTopSwitch = RobotMap.RIGHT_TOP_LIMIT_SWITCH;
+	public static int leftBottomSwitch = RobotMap.LEFT_BOTTOM_LIMIT_SWITCH;
+	public static int rightBottomSwitch = RobotMap.RIGHT_BOTTOM_LIMIT_SWITCH;
 	
+	
+	public static int pusherButton = RobotMap.OPERATE_PUSHER;
 	public static int clampButton = RobotMap.CLAMP_UP_DOWN_BUTTON;
 	public static int leftPushSolenoidPort = RobotMap.LEFT_PUSH_SOLENOID;
 	public static int leftPullSolenoidPort = RobotMap.LEFT_PULL_SOLENOID;
 	public static int rightPushSolenoidPort = RobotMap.RIGHT_PUSH_SOLENOID;
 	public static int rightPullSolenoidPort = RobotMap.RIGHT_PULL_SOLENOID;
+	public static int pusherSolenoidPort = RobotMap.PUSHER_SOLENOID;
 	
 	public OI() {
 	}

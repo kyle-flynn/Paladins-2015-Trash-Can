@@ -4,9 +4,9 @@ import org.usfirst.frc.team3618.robot.OI;
 import org.usfirst.frc.team3618.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.Talon;
-
-
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class LiftSubsystem extends Subsystem{
@@ -19,15 +19,23 @@ public class LiftSubsystem extends Subsystem{
 	private Talon leftTalon;
 	private Talon rightTalon;
 	
-	private Joystick liftingStick;
+	private DigitalInput leftTopLimitSwitch;
+	private DigitalInput rightTopLimitSwitch;
+	private DigitalInput leftBottomLimitSwitch;
+	private DigitalInput rightBottomLimitSwitch;
 	
 	public LiftSubsystem() {
 		leftTalon = new Talon(RobotMap.LEFT_LIFT_TALON_PORT);
 		rightTalon = new Talon(RobotMap.RIGHT_LIFT_TALON_PORT);
+		leftTopLimitSwitch = new DigitalInput(OI.leftTopSwitch);
+		rightTopLimitSwitch = new DigitalInput(OI.rightTopSwitch);
+		leftBottomLimitSwitch = new DigitalInput(OI.leftBottomSwitch);
+		rightBottomLimitSwitch = new DigitalInput(OI.rightBottomSwitch);
+		
 	}
 	
 	public void initDefaultCommand() {
-		
+		stopLift();//Safety, just for fun
 	}
 	
 	public void stopLift() {
@@ -43,10 +51,10 @@ public class LiftSubsystem extends Subsystem{
 		//Code to lower lift
 	}
 	
-	public void useStick()
+	public void useStick(Joystick stick)
 	{
 		//I am hoping like all hell that .getY() returns from -1 to 1
-		double power = liftingStick.getY();
+		double power = stick.getY();
 		leftTalon.set(-1 * power);//Must turn counterclockwise to lift
 		rightTalon.set(power);//Must turn clockwise to lift
 	}
@@ -54,17 +62,24 @@ public class LiftSubsystem extends Subsystem{
 	public void operateLift(Joystick liftStick)
 	{
 		//Code that calls stop, up, down, etc.
-		liftingStick = liftStick;
-		if(liftingStick.getRawButton(OI.liftUpButton)){//If button is pressed to increment lift
-			liftUpIterative();
-		}else if(liftingStick.getRawButton(OI.liftDownButton)){//If button is pressed to increment down
-			liftDownIterative();
-		}else if(liftingStick.getRawButton(OI.triggerLiftOn)){
-			if(liftingStick.getY() == 0){//The stick is not being pressed
-				stopLift();//It's not being used
-			} else{
-				useStick();
+		if(leftTopLimitSwitch.get() ||
+		   rightTopLimitSwitch.get() ||
+		   leftBottomLimitSwitch.get() ||
+		   rightBottomLimitSwitch.get()){
+			//If a limit is hit
+			stopLift();
+			liftStick.setRumble(Joystick.RumbleType.kLeftRumble, 1);
+			try{
+				liftStick.wait(3);
+			} catch(InterruptedException i){
+				//Idk what to do if this happens or if it will
 			}
+		}else {
+			while(liftStick.getRawButton(OI.triggerLiftOn)){
+				useStick(liftStick);
+			}
+			//If the button is not pressed
+			stopLift();
 		}
 	}
 

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.ClampSubsystem;
+import org.usfirst.frc.team3618.robot.subsystems.TotePusherSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,6 +23,7 @@ public class Robot extends IterativeRobot {
 	public static final ChassisSubsystem chassisSubsystem = new ChassisSubsystem();
 	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
 	public static final ClampSubsystem clampSubsystem = new ClampSubsystem();
+	public static final TotePusherSubsystem totePusherSubsystem = new TotePusherSubsystem();
 	public static OI oi;
 
     /**
@@ -70,24 +72,9 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         chassisSubsystem.driveMe(OI.driveStick);
         liftSubsystem.operateLift(OI.bigStick);
+        totePusherSubsystem.operate(OI.bigStick);
         
-        Joystick launchPad = OI.launchPad;
-        if(launchPad.getRawButton(OI.BadassSwitch)){
-        	chassisSubsystem.drive.mecanumDrive_Cartesian(.5, -.5, 0.0, 0.0);
-        	System.out.println("Switch hit.");
-        }
-        if(launchPad.getRawButton(OI.BigBlue)){
-        	System.out.println("Big Blue.");
-        }
-        if(launchPad.getRawButton(OI.BigWhite)){
-        	System.out.println("Big White.");
-        }
-        if(launchPad.getRawButton(OI.TopButton)){
-        	System.out.println("Top Button.");
-        }
-        if(launchPad.getRawButton(OI.BottomButton)){
-        	System.out.println("Bottom Button.");
-        }
+        
         
         
     }
