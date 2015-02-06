@@ -24,7 +24,7 @@ public class RobotMap {
 	public static int RIGHT_LIFT_TALON_PORT = 6;//They are like this on the practice robot
 	
 	public static int LEFT_TOP_LIMIT_SWITCH;
-	public static int RIGHT_TOP_LIMIT_SWITCH;
+	public static int RIGHT_TOP_LIMIT_SWITCH = 0;
 	public static int LEFT_BOTTOM_LIMIT_SWITCH;
 	public static int RIGHT_BOTTOM_LIMIT_SWITCH;
 	

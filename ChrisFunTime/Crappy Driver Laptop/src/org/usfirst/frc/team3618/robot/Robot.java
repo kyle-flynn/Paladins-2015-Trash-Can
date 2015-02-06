@@ -2,7 +2,6 @@
 package org.usfirst.frc.team3618.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -24,14 +23,12 @@ public class Robot extends IterativeRobot {
 	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
 	public static final ClampSubsystem clampSubsystem = new ClampSubsystem();
 	public static final TotePusherSubsystem totePusherSubsystem = new TotePusherSubsystem();
-	public static OI oi;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
         // instantiate the command used for the autonomous period
     }
 	
