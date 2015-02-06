@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class TotePusherSubsystem extends Subsystem {
 	
-	Solenoid TotePusherSolenoid = new Solenoid(9); 
+	Solenoid TotePusherSolenoid = new Solenoid(4); 
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
