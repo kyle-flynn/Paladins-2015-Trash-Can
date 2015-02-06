@@ -1,3 +1,5 @@
 # compiled code is to be ignored:
 bin/
 .metadata/
+*.class
+*.jar
