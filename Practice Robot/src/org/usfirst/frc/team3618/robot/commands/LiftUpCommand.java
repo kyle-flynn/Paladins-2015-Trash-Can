@@ -1,8 +1,6 @@
 package org.usfirst.frc.team3618.robot.commands;
-
 import org.usfirst.frc.team3618.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
-
 /**
  *
  */
@@ -20,10 +18,16 @@ public class LiftUpCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.liftSubsystem.liftUp(0.5);
-    	
+    	if (Robot.liftSubsystem.trLimitSwitch.get() 
+    			|| Robot.liftSubsystem.tlLimitSwitch.get() 
+    			|| Robot.liftSubsystem.brLimitSwitch.get()
+    			|| Robot.liftSubsystem.blLimitSwitch.get()) {
+    		Robot.liftSubsystem.stopLiftingDown();
+    	} else {
+    		Robot.liftSubsystem.liftUp(0.5);
+    	}
     }
-
+    
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;

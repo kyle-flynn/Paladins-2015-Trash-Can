@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3618.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -13,6 +14,10 @@ public class LiftSubsystem extends Subsystem {
 	Talon rightLiftTalon = new Talon(6);
 	DoubleSolenoid leftArm = new DoubleSolenoid(1, 2);
 	DoubleSolenoid rightArm = new DoubleSolenoid(1, 2);
+	public DigitalInput tlLimitSwitch = new DigitalInput(0);
+	public DigitalInput trLimitSwitch = new DigitalInput(1);
+	public DigitalInput blLimitSwitch = new DigitalInput(2);
+	public DigitalInput brLimitSwitch = new DigitalInput(3);
 	
 //I used liftUp, stopLiftingUp, liftDown, and stopLiftingDown	
 	
@@ -23,6 +28,7 @@ public class LiftSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+       
     
     public void moveArmsUp() {
     	leftArm.set(DoubleSolenoid.Value.kForward);

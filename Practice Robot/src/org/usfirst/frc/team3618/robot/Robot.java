@@ -1,16 +1,16 @@
 
 package org.usfirst.frc.team3618.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-
-import org.usfirst.frc.team3618.robot.commands.DriveCommand;
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.TotePusherSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.VisionSubsystem;
+
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,13 +27,17 @@ public class Robot extends IterativeRobot {
 	public static final TotePusherSubsystem totePusherSubsystem = new TotePusherSubsystem();
 	public static OI oi;
 
+	// Power Distribution Panel instance for seeing current
+	private PowerDistributionPanel pdp;
+	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
-        // instantiate the command used for the autonomous period
+		// Creating instances of objects
+    	oi = new OI();
+    	pdp = new PowerDistributionPanel(); 
        
 		visionSubsystem.init();
     }
@@ -43,7 +47,6 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
      
     }
 
@@ -55,11 +58,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        
+		
     }
 
     /**
@@ -75,6 +74,10 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
+        // PDP Values are being sent to SmartDashboard constantly
+        SmartDashboard.putNumber("PDP Totall Current", pdp.getTotalCurrent());
+        SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
     }
     
     /**
