@@ -35,6 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 #include <sstream>
 #include <unistd.h>
 #include <pthread.h>
+#include "networktables/NetworkTable.h"
 
 using namespace cv;
 using namespace std;
@@ -157,6 +158,9 @@ bool progRun;
 
 int main(int argc, const char* argv[])
 {
+	NetworkTable::SetClientMode();
+	NetworkTable::SetIPAddress("localhost"); // where is the robot?
+	NetworkTable *table = NetworkTable::GetTable("SmartDashboard"); // what table will we interface with?
 
 	//Read command line inputs to determine how the program will execute
 	ProgParams params;
@@ -213,9 +217,14 @@ int main(int argc, const char* argv[])
 				pthread_mutex_unlock(&targetMutex);
 
 				clock_gettime(CLOCK_REALTIME, &end);
+				double Elapsed = diffClock(start,end); // always compute
+				if (table->IsConnected()) {
+			      table->PutNumber("FrameTimeSeconds",Elapsed);
+			      cout << "Put\n";
+				}
 
 				if(params.Timer)
-					cout << "It took " << diffClock(start,end) << " seconds to process frame \n";
+					cout << "It took " << Elapsed << " seconds to process frame \n";
 
 
 			}
