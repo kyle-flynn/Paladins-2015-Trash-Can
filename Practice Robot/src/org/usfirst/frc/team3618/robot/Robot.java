@@ -38,8 +38,6 @@ public class Robot extends IterativeRobot {
 		// Creating instances of objects
     	oi = new OI();
     	pdp = new PowerDistributionPanel(); 
-       
-		visionSubsystem.init();
     }
 	
 	public void disabledPeriodic() {
@@ -76,8 +74,11 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         
         // PDP Values are being sent to SmartDashboard constantly
-        SmartDashboard.putNumber("PDP Totall Current", pdp.getTotalCurrent());
-        SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());
+        SmartDashboard.putNumber("PDP Motor 0 Current", pdp.getCurrent(0));
+        SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());      
+        //Periodic methods are called once every 20ms (50Hz) and that equates to 50 cycles per 1 second
+        
+        
     }
     
     /**
