@@ -54,6 +54,7 @@ struct ProgParams
 	bool Debug;
 	bool Process;
 	bool USB_Cam;
+	bool WebImage;
 };
 
 //Stuct to hold information about targets found
@@ -148,7 +149,7 @@ Target targets;
 Mat frame;
 
 //Global Timestamps for auto
-struct timespec autoStart, autoEnd;
+struct timespec autoStart, autoEnd, lastweb;
 
 
 //Control process thread exectution
@@ -175,6 +176,7 @@ int main(int argc, const char* argv[])
 	progRun = false;
 
 	struct timespec start, end;
+	clock_gettime(CLOCK_REALTIME, &lastweb); // initial value of 'now'
 
 	//run loop forever
 	while (true)
@@ -401,7 +403,15 @@ void findTarget(Mat original, Mat thresholded, Target& targets, const ProgParams
 	}
 
 	if(params.Visualize)
-				imshow("Contours", original); //Make a rectangle that encompasses the target
+		imshow("Contours", original); //Make a rectangle that encompasses the target
+	struct timespec now;
+	clock_gettime(CLOCK_REALTIME, &now);
+	if (params.WebImage && (diffClock(lastweb,now) > 1.0)) {
+		// only update image 1 time per second, reducing interference between Web refreshes (getting invalid jpg)
+		// this ends up being accessible over the web browser to the roboRio at http://roborio-3618.local/WIF/Core/Image.jpg
+		imwrite("/var/local/natinst/www/WIF/Core/Image.jpg", original); // store image where it can be seen remotely
+		lastweb = now; // update our snapshot time
+	}
 
 	pthread_mutex_lock(&matchStartMutex);
 	if (!targets.matchStart)
@@ -469,7 +479,7 @@ void initializeParams(ProgParams& params)
 	params.Visualize = false;
 	params.Process = true;
 	params.USB_Cam = false;
-
+	params.WebImage = false;
 }
 
 /**
@@ -548,6 +558,10 @@ void parseCommandInputs(int argc, const char* argv[], ProgParams& params)
 			{
 				params.ROBOT_PORT = string(argv[i + 1]);
 				return;
+			}
+			else if (string(argv[i]) == "-w") // Web image wanted
+			{
+				params.WebImage = true;
 			}
 			else if (string(argv[i]) == "-help") //help
 			{
@@ -736,7 +750,7 @@ void *VideoCap(void *args)
 				progRun = true;
 
 			}
-			usleep(1000); //sleep for 5ms
+			usleep(1000); //sleep for 1ms
 		}
 
 	}
@@ -798,7 +812,7 @@ void printCommandLineUsage()
 
 
 /*
- * Calculate real clock difference
+ * Calculate real clock difference, returning SECONDS
  */
 double diffClock(timespec start, timespec end)
 {

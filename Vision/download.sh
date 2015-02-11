@@ -1,1 +1,1 @@
-scp Rio_Beagle/3618_Vision admin@169.254.147.236:../lvuser/Vision/
+scp Rio_Beagle/3618_Vision admin@10.20.236.136:../lvuser/Vision/
