@@ -79,8 +79,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("PDP Motor 0 Current", pdp.getCurrent(0));
         SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());      
         //Periodic methods are called once every 20ms (50Hz) and that equates to 50 cycles per 1 second
-        
-        
     }
     
     /**
