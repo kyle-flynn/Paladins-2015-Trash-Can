@@ -3,6 +3,7 @@ package org.usfirst.frc.team3618.robot;
 
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team3618.robot.subsystems.ToteArmSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.TotePusherSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.VisionSubsystem;
 
