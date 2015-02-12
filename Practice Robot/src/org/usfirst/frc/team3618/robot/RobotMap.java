@@ -58,7 +58,7 @@ public class RobotMap {
 		public static int LEFT_TOTE_ARM_IN = 6;
 		public static int RIGHT_TOTE_ARM_OUT = 7;
 		public static int RIGHT_TOTE_ARM_IN = 0;
-					//
+					//Tote pusher solenoid 
 	
 	
 	
