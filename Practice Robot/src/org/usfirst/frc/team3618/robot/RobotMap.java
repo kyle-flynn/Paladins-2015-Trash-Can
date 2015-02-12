@@ -24,14 +24,14 @@ public class RobotMap {
 	
 	public static int LEFT_FRONT_DRIVE_MOTOR = 0;
 	public static int LEFT_REAR_DRIVE_MOTOR = 1;
-	//2 not defined at this moment
+	public static int LAWRENCE_SHOULDER_MOTOR = 2;
 	public static int LEFT_LIFT_MOTOR = 3;
 	public static int RIGHT_REAR_DRIVE_MOTOR = 4;
 	public static int RIGHT_FRONT_DRIVE_MOTOR = 5;
 	public static int RIGHT_LIFT_MOTOR = 6;
-	//7 not defined at this moment
-	public static int LAWRENCE_SHOULDER_MOTOR = 8;
-	public static int LAWRENCE_ELBOW_MOTOR = 9;
+	public static int LAWRENCE_ELBOW_MOTOR = 7;
+	
+	
 	
 	
 	
@@ -76,29 +76,28 @@ public class RobotMap {
 	
 	
 	//DIO
-	
+		//Limit Switches
 	public static int TOP_RIGHT_LIMIT = 0;
 	public static int TOP_LEFT_LIMIT = 1;
 	public static int BOTTOM_LEFT_LIMIT = 2;
 	public static int BOTTOM_RIGHT_LIMIT = 3;
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		//Encoders
+	public static int FRONT_LEFT_WHEEL_A = 4;	
+	public static int FRONT_LEFT_WHEEL_B = 5;
+	public static int FRONT_RIGHT_WHEEL_A = 6;
+	public static int FRONT_RIGHT_WHEEL_B = 7;
+	public static int REAR_LEFT_WHEEL_A = 8;  
+	public static int REAR_LEFT_WHEEL_B = 9;
+	public static int REAR_RIGHT_WHEEL_A = 0;
+	public static int REAR_RIGHT_WHEEL_B = 1;
+	public static int LAWRENCE_SHOULDER_A = 2;
+	public static int LAWRENCE_SHOULDER_B = 3;
+	public static int LAWRENCE_ELBOW_A = 4;
+	public static int LAWRENCE_ELBOW_B = 5;
+	public static int LEFT_LIFT_A = 6;
+	public static int LEFT_LIFT_B = 7;
+	public static int RIGHT_LIFT_A = 8;
+	public static int RIGHT_LIFT_B = 9;
 	
 	
 		
