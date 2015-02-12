@@ -48,13 +48,13 @@ public class RobotMap {
 	
 	
 	//Solenoids
-	
-	
-	
-	
-	
-	
-	
+					//tote clamp double solenoids ->
+		public static int LEFT_TOTE_ARM_CLAMP_IN = 1;
+		public static int LEFT_TOTE_ARM_CLAMP_OUT = 0;
+		public static int RIGHT_TOTE_ARM_CLAMP_IN = 3;
+		public static int RIGHT_TOTE_ARM_CLAMP_OUT = 2;
+					//tote arm Double Solenoids ->
+		
 	
 	
 	
