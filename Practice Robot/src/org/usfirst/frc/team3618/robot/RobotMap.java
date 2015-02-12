@@ -77,8 +77,11 @@ public class RobotMap {
 	
 	//DIO
 	
-	
-	
+	public static int TOP_RIGHT_LIMIT = 0;
+	public static int TOP_LEFT_LIMIT = 1;
+	public static int BOTTOM_LEFT_LIMIT = 2;
+	public static int BOTTOM_RIGHT_LIMIT = 3;
+
 	
 	
 	

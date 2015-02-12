@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LiftSubsystem extends Subsystem {
     
-	Talon leftLiftTalon = new Talon(3);
-	Talon rightLiftTalon = new Talon(6);
+	Talon leftLiftTalon = new Talon(RobotMap.LEFT_LIFT_MOTOR);
+	Talon rightLiftTalon = new Talon(RobotMap.RIGHT_LIFT_MOTOR);
 	DoubleSolenoid leftArm = new DoubleSolenoid(RobotMap.LEFT_TOTE_ARM_CLAMP_IN,RobotMap.LEFT_TOTE_ARM_CLAMP_OUT);
 	DoubleSolenoid rightArm = new DoubleSolenoid(RobotMap.RIGHT_TOTE_ARM_CLAMP_IN,RobotMap.RIGHT_TOTE_ARM_CLAMP_OUT);
 	public DigitalInput tlLimitSwitch = new DigitalInput(0);
