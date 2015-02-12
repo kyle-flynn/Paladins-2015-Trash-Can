@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
 	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
 	public static final VisionSubsystem visionSubsystem = new VisionSubsystem();
 	public static final TotePusherSubsystem totePusherSubsystem = new TotePusherSubsystem();
+	public static final ToteArmSubsystem toteArmSubsystem = new ToteArmSubsystem();
 	public static OI oi;
 
 	// Power Distribution Panel instance for seeing current
