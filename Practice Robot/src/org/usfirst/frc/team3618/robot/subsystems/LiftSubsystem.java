@@ -16,10 +16,10 @@ public class LiftSubsystem extends Subsystem {
 	Talon rightLiftTalon = new Talon(RobotMap.RIGHT_LIFT_MOTOR);
 	DoubleSolenoid leftArm = new DoubleSolenoid(RobotMap.LEFT_TOTE_ARM_CLAMP_IN,RobotMap.LEFT_TOTE_ARM_CLAMP_OUT);
 	DoubleSolenoid rightArm = new DoubleSolenoid(RobotMap.RIGHT_TOTE_ARM_CLAMP_IN,RobotMap.RIGHT_TOTE_ARM_CLAMP_OUT);
-	public DigitalInput tlLimitSwitch = new DigitalInput(0);
-	public DigitalInput trLimitSwitch = new DigitalInput(1);
-	public DigitalInput blLimitSwitch = new DigitalInput(2);
-	public DigitalInput brLimitSwitch = new DigitalInput(3);
+	public DigitalInput tlLimitSwitch = new DigitalInput(RobotMap.TOP_RIGHT_LIMIT);
+	public DigitalInput trLimitSwitch = new DigitalInput(RobotMap.TOP_LEFT_LIMIT);
+	public DigitalInput blLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LEFT_LIMIT);
+	public DigitalInput brLimitSwitch = new DigitalInput(RobotMap.BOTTOM_RIGHT_LIMIT);
 	
 //I used liftUp, stopLiftingUp, liftDown, and stopLiftingDown	
 	
