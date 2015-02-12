@@ -27,6 +27,7 @@ public class OI {
 	
 	public static Joystick stick = new Joystick (1);
 	public static Joystick stick2 = new Joystick (2);
+	public static Joystick launchpad = new Joystick (3);
 	
 	public Button liftUp = new JoystickButton(stick, 4);
 	public Button liftDown = new JoystickButton(stick, 3);
