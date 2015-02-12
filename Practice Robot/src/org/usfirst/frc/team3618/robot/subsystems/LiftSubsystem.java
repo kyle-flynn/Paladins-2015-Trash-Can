@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3618.robot.subsystems;
 
+import org.usfirst.frc.team3618.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Talon;
@@ -12,8 +14,8 @@ public class LiftSubsystem extends Subsystem {
     
 	Talon leftLiftTalon = new Talon(3);
 	Talon rightLiftTalon = new Talon(6);
-	DoubleSolenoid leftArm = new DoubleSolenoid(1, 2);
-	DoubleSolenoid rightArm = new DoubleSolenoid(1, 2);
+	DoubleSolenoid leftArm = new DoubleSolenoid(RobotMap.LEFT_TOTE_ARM_CLAMP_IN,RobotMap.LEFT_TOTE_ARM_CLAMP_OUT);
+	DoubleSolenoid rightArm = new DoubleSolenoid(RobotMap.RIGHT_TOTE_ARM_CLAMP_IN,RobotMap.RIGHT_TOTE_ARM_CLAMP_OUT);
 	public DigitalInput tlLimitSwitch = new DigitalInput(0);
 	public DigitalInput trLimitSwitch = new DigitalInput(1);
 	public DigitalInput blLimitSwitch = new DigitalInput(2);
