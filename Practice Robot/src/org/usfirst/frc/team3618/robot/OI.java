@@ -23,13 +23,13 @@ public class OI {
 	public static Joystick stick2 = new Joystick (2);
 	public static Joystick launchpad = new Joystick (3);
 	
-	public Button liftUp = new JoystickButton(stick, 4);
-	public Button liftDown = new JoystickButton(stick, 3);
-	public Button pushIn = new JoystickButton(stick, 9);
-	public Button pushOut = new JoystickButton(stick, 10);
-	public Button armsDown = new JoystickButton(stick, 1);
-	public Button armsUp = new JoystickButton(stick, 2);
-	public Button leftToteArmUp = new JoystickButton(stick2, 1);
+	public Button liftUp = new JoystickButton(stick2, 4);
+	public Button liftDown = new JoystickButton(stick2, 5);
+	public Button pushIn = new JoystickButton(stick, 6);
+	public Button pushOut = new JoystickButton(stick, 5);
+	public Button armsDown = new JoystickButton(stick, 4);
+	public Button armsUp = new JoystickButton(stick, 3);
+	public Button leftToteArmUp = new JoystickButton(stick2, 3);
 		public Button leftToteArmDown = new JoystickButton(stick2, 2);
 	
 public OI(){
