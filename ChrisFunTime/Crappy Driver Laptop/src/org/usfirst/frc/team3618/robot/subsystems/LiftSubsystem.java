@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3618.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team3618.robot.OI;
 import org.usfirst.frc.team3618.robot.RobotMap;
 
@@ -38,6 +40,14 @@ public class LiftSubsystem extends Subsystem{
 		stopLift();//Safety, just for fun
 	}
 	
+	
+	
+	
+	
+	DigitalInput limitSwitch; 
+	
+
+	//I really have no idea if this will work or not
 	public void stopLift() {
 		leftTalon.stopMotor();
 		rightTalon.stopMotor();
@@ -46,6 +56,7 @@ public class LiftSubsystem extends Subsystem{
 	public void liftUpIterative(){
 		//Code to lift up lift
 	}
+			
 	
 	public void liftDownIterative(){
 		//Code to lower lift

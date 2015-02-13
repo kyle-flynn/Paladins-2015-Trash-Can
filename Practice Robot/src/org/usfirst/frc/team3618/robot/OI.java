@@ -6,8 +6,6 @@ import org.usfirst.frc.team3618.robot.commands.JogDownCommand;
 import org.usfirst.frc.team3618.robot.commands.JogUpCommand;
 import org.usfirst.frc.team3618.robot.commands.LeftToteArmDownCommand;
 import org.usfirst.frc.team3618.robot.commands.LeftToteArmUpCommand;
-import org.usfirst.frc.team3618.robot.commands.RightToteArmDownCommand;
-import org.usfirst.frc.team3618.robot.commands.RightToteArmUpCommand;
 import org.usfirst.frc.team3618.robot.commands.TotePusherInCommand;
 import org.usfirst.frc.team3618.robot.commands.TotePusherOutCommand;
 
@@ -31,10 +29,8 @@ public class OI {
 	public Button pushOut = new JoystickButton(stick, 10);
 	public Button armsDown = new JoystickButton(stick, 1);
 	public Button armsUp = new JoystickButton(stick, 2);
-	public Button rightToteArmUp = new JoystickButton(stick2, 1);
-	public Button leftToteArmUp = new JoystickButton(stick2, 2);
-	public Button rightToteArmDown = new JoystickButton(stick2, 3);
-	public Button leftToteArmDown = new JoystickButton(stick2, 4);
+	public Button leftToteArmUp = new JoystickButton(stick2, 1);
+		public Button leftToteArmDown = new JoystickButton(stick2, 2);
 	
 public OI(){
 	liftUp.whileHeld(new JogUpCommand());
@@ -43,9 +39,7 @@ public OI(){
 	pushOut.whenPressed(new TotePusherOutCommand());
 	armsDown.whenPressed(new ArmsDownCommand());
 	armsUp.whenPressed(new ArmsUpCommand());
-	rightToteArmUp.whenPressed(new RightToteArmUpCommand());
 	leftToteArmUp.whenPressed(new LeftToteArmUpCommand());
-	rightToteArmDown.whenPressed(new RightToteArmDownCommand());
 	leftToteArmDown.whenPressed(new LeftToteArmDownCommand());
 	
 	
