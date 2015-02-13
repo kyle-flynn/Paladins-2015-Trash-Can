@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team3618.robot.subsystems;
 
+import org.usfirst.frc.team3618.robot.Robot;
 import org.usfirst.frc.team3618.robot.RobotMap;
 import org.usfirst.frc.team3618.robot.commands.DriveCommand;
 
@@ -29,12 +30,18 @@ public class ChassisSubsystem extends Subsystem {
 //	    	frontLeft.reset();
 //	    	backLeft.reset();
 	    }
-//	 public Encoder frontRight = new Encoder(0,1, false,Encoder.EncodingType.k4X); 
-//	 
-//	 public Encoder backRight = new Encoder(2,3, false,Encoder.EncodingType.k4X);
-//	 public Encoder frontLeft = new Encoder(3,5, false,Encoder.EncodingType.k4X);
-//	 public Encoder backLeft = new Encoder(6,7, false,Encoder.EncodingType.k4X); 
-//	 
+	 public Encoder frontRight = new Encoder(0,1, false,Encoder.EncodingType.k4X); 
+	 
+	 public Encoder backRight = new Encoder(2,3, false,Encoder.EncodingType.k4X);
+	 public Encoder frontLeft = new Encoder(3,5, false,Encoder.EncodingType.k4X);
+	 public Encoder backLeft = new Encoder(6,7, false,Encoder.EncodingType.k4X); 
+	 
+	 public void resetEncoders() {
+		 frontRight.reset();
+		 backRight.reset();
+		 frontLeft.reset();
+		 backLeft.reset();
+	 }
 	 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -42,10 +49,12 @@ public class ChassisSubsystem extends Subsystem {
     }
     
     public void DriveMe (Joystick stick) { 
-    	myRobotDrive.mecanumDrive_Cartesian(stick.getX(),stick.getY(),stick.getZ(),0);
-    	
-    	
+    	myRobotDrive.mecanumDrive_Cartesian(stick.getX(),stick.getY(),stick.getZ(),0); 	   	
     }
+    public void DriveMe(float speed) {
+    	myRobotDrive.mecanumDrive_Cartesian(speed,0,0,0); 	   	
+    }
+        
     public void StopMe () {
     	myRobotDrive.drive(0, 0);
     }

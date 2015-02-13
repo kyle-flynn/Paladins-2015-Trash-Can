@@ -32,21 +32,7 @@ public class RobotMap {
 	public static int LAWRENCE_ELBOW_MOTOR = 7;
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	//Solenoids
 					//tote clamp double solenoids ->
 		
@@ -61,21 +47,9 @@ public class RobotMap {
 					//Tote pusher solenoid ->
 		public static int TOTE_PUSHER_OUT = 6;
 		public static int TOTE_PUSHER_IN = 7;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	//DIO
+		
 		//Limit Switches
 	public static int TOP_RIGHT_LIMIT = 11;
 	public static int TOP_LEFT_LIMIT = 10;
@@ -99,7 +73,12 @@ public class RobotMap {
 	public static int RIGHT_LIFT_A = 0;
 	public static int RIGHT_LIFT_B = 1;
 	
+	//Encoders
 	
+	public static final double DRIVE_WHEEL_DIAMETER_FEET  = 0.5;
+    public static final double MOTOR_TO_WHEEL_GEAR_RATIO  = 1/1;
+    public static final int ENCODER_PULSES_PER_REVOLUTION = 250;
+		
 		
 	
 	
