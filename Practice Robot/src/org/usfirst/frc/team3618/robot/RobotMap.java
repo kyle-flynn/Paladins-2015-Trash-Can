@@ -71,8 +71,8 @@ public class RobotMap {
 	public static int LAWRENCE_ELBOW_B = 9;
 	public static int LEFT_LIFT_A = 0;
 	public static int LEFT_LIFT_B = 1;
-	public static int RIGHT_LIFT_A = 2;
-	public static int RIGHT_LIFT_B = 3;
+	public static int RIGHT_LIFT_A = 3;
+	public static int RIGHT_LIFT_B = 2;
 	
 	//Encoders
 	
