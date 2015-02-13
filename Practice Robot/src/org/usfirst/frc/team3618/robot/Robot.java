@@ -2,6 +2,7 @@
 package org.usfirst.frc.team3618.robot;
 
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
+import org.usfirst.frc.team3618.robot.subsystems.LawrenceSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LeftPIDSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.RightPIDSubsystem;
@@ -31,6 +32,7 @@ public class Robot extends IterativeRobot {
 	public static final ToteArmSubsystem toteArmSubsystem = new ToteArmSubsystem();
 	public static final RightPIDSubsystem rightPIDSubsystem = new RightPIDSubsystem();
 	public static final LeftPIDSubsystem leftPIDSubsystem = new LeftPIDSubsystem();
+	public static final LawrenceSubsystem lawrenceSubsystem = new LawrenceSubsystem();
 	public static OI oi;
 
 	// Power Distribution Panel instance for seeing current
