@@ -81,7 +81,15 @@ public class Robot extends IterativeRobot {
         
         // PDP Values are being sent to SmartDashboard constantly
         SmartDashboard.putNumber("PDP Motor 0 Current", pdp.getCurrent(0));
-        SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());      
+        SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());  
+        SmartDashboard.putBoolean(
+        		"BottomLeftLimit", Robot.leftPIDSubsystem.bLimitSwitch.get());
+        SmartDashboard.putBoolean(
+        		"BottomRightLimit", Robot.rightPIDSubsystem.bLimitSwitch.get());
+        SmartDashboard.putNumber(
+        		"LeftEncoder", Robot.leftPIDSubsystem.leftLiftEncoder.get());
+        SmartDashboard.putNumber(
+        		"RightEncoder", Robot.rightPIDSubsystem.rightLiftEncoder.get());
         //Periodic methods are called once every 20ms (50Hz) and that equates to 50 cycles per 1 second
     }
     

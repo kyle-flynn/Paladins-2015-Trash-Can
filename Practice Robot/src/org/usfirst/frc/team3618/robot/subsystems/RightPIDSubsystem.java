@@ -16,7 +16,7 @@ public class RightPIDSubsystem extends PIDSubsystem {
 	Talon rightLiftTalon = new Talon(RobotMap.RIGHT_LIFT_MOTOR);
 	public Encoder rightLiftEncoder = new Encoder(RobotMap.RIGHT_LIFT_A,
 			  RobotMap.RIGHT_LIFT_B);
-	public DigitalInput tLimitSwitch = new DigitalInput(RobotMap.TOP_RIGHT_LIMIT);
+	//public DigitalInput tLimitSwitch = new DigitalInput(RobotMap.TOP_RIGHT_LIMIT);
 	public DigitalInput bLimitSwitch = new DigitalInput(RobotMap.BOTTOM_RIGHT_LIMIT);
 	
 	
@@ -26,7 +26,6 @@ public class RightPIDSubsystem extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	
     	super("RightLiftSubsystem", 1.0, 0.0, 0.0);
     	setSetpoint(Robot.liftSubsystem.countsAtLevel(0));
     }
@@ -46,17 +45,18 @@ public class RightPIDSubsystem extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
+    	output = -output; // make 'down' negative
     	if(output < 0 && bLimitSwitch.get())
     		output = 0;
-    	if(output > 0 && tLimitSwitch.get())
-    		output = 0;
+    	//if(output > 0 && tLimitSwitch.get())
+    		//output = 0;
     	 rightLiftTalon.set(output);
     	
     }
     
     public void jog(double output){
     	disable();
-    	rightLiftTalon.set(output);
+    	rightLiftTalon.set(-output);
     }
     
     public void stop(){

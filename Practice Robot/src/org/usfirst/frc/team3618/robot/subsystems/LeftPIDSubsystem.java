@@ -16,7 +16,7 @@ public class LeftPIDSubsystem extends PIDSubsystem {
 	Talon leftLiftTalon = new Talon(RobotMap.LEFT_LIFT_MOTOR);
 	public Encoder leftLiftEncoder = new Encoder(RobotMap.LEFT_LIFT_A,
 			 RobotMap.LEFT_LIFT_B);
-	public DigitalInput tLimitSwitch = new DigitalInput(RobotMap.TOP_LEFT_LIMIT);
+	//public DigitalInput tLimitSwitch = new DigitalInput(RobotMap.TOP_LEFT_LIMIT);
 	public DigitalInput bLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LEFT_LIMIT);
 	
     // Initialize your subsystem here
@@ -49,8 +49,8 @@ public class LeftPIDSubsystem extends PIDSubsystem {
         // e.g. yourMotor.set(output);
     	if(output < 0 && bLimitSwitch.get())
     		output = 0;
-    	if(output > 0 && tLimitSwitch.get())
-    		output = 0;
+  // 	if(output > 0 && tLimitSwitch.get())
+    		//output = 0;
     	 leftLiftTalon.set(output);
     }
     

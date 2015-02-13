@@ -30,17 +30,17 @@ public class ChassisSubsystem extends Subsystem {
 //	    	frontLeft.reset();
 //	    	backLeft.reset();
 	    }
-	 public Encoder frontRight = new Encoder(0,1, false,Encoder.EncodingType.k4X); 
+	// public Encoder frontRight = new Encoder(0,1, false,Encoder.EncodingType.k4X); 
 	 
-	 public Encoder backRight = new Encoder(2,3, false,Encoder.EncodingType.k4X);
-	 public Encoder frontLeft = new Encoder(3,5, false,Encoder.EncodingType.k4X);
-	 public Encoder backLeft = new Encoder(6,7, false,Encoder.EncodingType.k4X); 
+	 //public Encoder backRight = new Encoder(2,3, false,Encoder.EncodingType.k4X);
+	// public Encoder frontLeft = new Encoder(3,5, false,Encoder.EncodingType.k4X);
+	// public Encoder backLeft = new Encoder(6,7, false,Encoder.EncodingType.k4X); 
 	 
 	 public void resetEncoders() {
-		 frontRight.reset();
-		 backRight.reset();
-		 frontLeft.reset();
-		 backLeft.reset();
+		 //frontRight.reset();
+		 //backRight.reset();
+		 //frontLeft.reset();
+		 //backLeft.reset();
 	 }
 	 
     public void initDefaultCommand() {
@@ -49,7 +49,12 @@ public class ChassisSubsystem extends Subsystem {
     }
     
     public void DriveMe (Joystick stick) { 
-    	myRobotDrive.mecanumDrive_Cartesian(stick.getX(),stick.getY(),stick.getZ(),0); 	   	
+    	double max = 0.5;
+    	double x = stick.getX()*max;
+    	double y = stick.getY()*max;
+    	double z = stick.getZ()*max;
+    	
+    	myRobotDrive.mecanumDrive_Cartesian(0,0,0,0); 	   	
     }
     public void DriveMe(float speed) {
     	myRobotDrive.mecanumDrive_Cartesian(speed,0,0,0); 	   	
