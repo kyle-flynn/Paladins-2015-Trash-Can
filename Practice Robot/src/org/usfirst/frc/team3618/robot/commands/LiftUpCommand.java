@@ -22,7 +22,7 @@ public class LiftUpCommand extends Command {
     			|| Robot.liftSubsystem.tlLimitSwitch.get() 
     			|| Robot.liftSubsystem.brLimitSwitch.get()
     			|| Robot.liftSubsystem.blLimitSwitch.get()) {
-    		Robot.liftSubsystem.stopLiftingDown();
+    		Robot.liftSubsystem.stopLifting();
     	} else {
     		Robot.liftSubsystem.liftUp(0.5);
     	}
@@ -35,7 +35,7 @@ public class LiftUpCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.liftSubsystem.stopLiftingUp();
+    	Robot.liftSubsystem.stopLifting();
     }
 
     // Called when another command which requires one or more of the same

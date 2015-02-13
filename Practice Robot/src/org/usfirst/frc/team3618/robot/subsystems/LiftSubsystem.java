@@ -14,10 +14,9 @@ public class LiftSubsystem extends Subsystem {
     
 	Talon leftLiftTalon = new Talon(RobotMap.LEFT_LIFT_MOTOR);
 	Talon rightLiftTalon = new Talon(RobotMap.RIGHT_LIFT_MOTOR);
-	DoubleSolenoid leftArm = new DoubleSolenoid(RobotMap.LEFT_TOTE_ARM_CLAMP_IN,RobotMap.LEFT_TOTE_ARM_CLAMP_OUT);
-	DoubleSolenoid rightArm = new DoubleSolenoid(RobotMap.RIGHT_TOTE_ARM_CLAMP_IN,RobotMap.RIGHT_TOTE_ARM_CLAMP_OUT);
-	//public DigitalInput tlLimitSwitch = new DigitalInput(RobotMap.TOP_RIGHT_LIMIT);
-	//public DigitalInput trLimitSwitch = new DigitalInput(RobotMap.TOP_LEFT_LIMIT);
+	DoubleSolenoid Arms = new DoubleSolenoid(RobotMap.TOTE_ARM_CLAMP_IN,RobotMap.TOTE_ARM_CLAMP_OUT);
+	public DigitalInput tlLimitSwitch = new DigitalInput(RobotMap.TOP_RIGHT_LIMIT);
+	public DigitalInput trLimitSwitch = new DigitalInput(RobotMap.TOP_LEFT_LIMIT);
 	public DigitalInput blLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LEFT_LIMIT);
 	public DigitalInput brLimitSwitch = new DigitalInput(RobotMap.BOTTOM_RIGHT_LIMIT);
 	
@@ -33,13 +32,11 @@ public class LiftSubsystem extends Subsystem {
        
     
     public void moveArmsUp() {
-    	leftArm.set(DoubleSolenoid.Value.kForward);
-    	rightArm.set(DoubleSolenoid.Value.kForward);
+    	Arms.set(DoubleSolenoid.Value.kForward);
     }
     
     public void moveArmsDown() {
-    	leftArm.set(DoubleSolenoid.Value.kReverse);
-    	rightArm.set(DoubleSolenoid.Value.kReverse);
+    	Arms.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void liftUp(double output){
@@ -47,7 +44,7 @@ public class LiftSubsystem extends Subsystem {
     	rightLiftTalon.set(output);
     }
     
-    public void stopLiftingUp(){
+    public void stopLifting(){
     	leftLiftTalon.set(0);
     	rightLiftTalon.set(0);
     }
@@ -55,11 +52,6 @@ public class LiftSubsystem extends Subsystem {
     public void liftDown(double output){
     	leftLiftTalon.set(-output);
     	rightLiftTalon.set(output);
-    }
-    
-    public void stopLiftingDown(){
-    	leftLiftTalon.set(0);
-    	rightLiftTalon.set(0);
     }
     
     public void leftLiftUp(double output){

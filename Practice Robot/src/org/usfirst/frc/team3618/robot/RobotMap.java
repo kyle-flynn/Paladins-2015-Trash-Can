@@ -49,18 +49,18 @@ public class RobotMap {
 	
 	//Solenoids
 					//tote clamp double solenoids ->
-		public static int LEFT_TOTE_ARM_CLAMP_IN = 1;
-		public static int LEFT_TOTE_ARM_CLAMP_OUT = 0;
-		public static int RIGHT_TOTE_ARM_CLAMP_IN = 3;
-		public static int RIGHT_TOTE_ARM_CLAMP_OUT = 2;
+		
+		public static int TOTE_ARM_CLAMP_OUT =2;
+		public static int TOTE_ARM_CLAMP_IN =3;
+		
 					//tote arm Double Solenoids ->
 		public static int LEFT_TOTE_ARM_OUT = 5;
 		public static int LEFT_TOTE_ARM_IN = 6;
-		public static int RIGHT_TOTE_ARM_OUT = 7;
+		public static int RIGHT_TOTE_ARM_OUT =1;
 		public static int RIGHT_TOTE_ARM_IN = 0;
-					//Tote pusher solenoid 
-	
-	
+					//Tote pusher solenoid ->
+		public static int TOTE_PUSHER_OUT = 6;
+		public static int TOTE_PUSHER_IN = 7;
 	
 	
 	
@@ -77,8 +77,8 @@ public class RobotMap {
 	
 	//DIO
 		//Limit Switches
-	//public static int TOP_RIGHT_LIMIT = 0;
-	//public static int TOP_LEFT_LIMIT = 1;
+	public static int TOP_RIGHT_LIMIT = 0;
+	public static int TOP_LEFT_LIMIT = 1;
 	public static int BOTTOM_LEFT_LIMIT = 2;
 	public static int BOTTOM_RIGHT_LIMIT = 3;
 		//Encoders

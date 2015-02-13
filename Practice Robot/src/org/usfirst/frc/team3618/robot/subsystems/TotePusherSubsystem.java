@@ -1,5 +1,8 @@
 package org.usfirst.frc.team3618.robot.subsystems;
 
+import org.usfirst.frc.team3618.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -8,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class TotePusherSubsystem extends Subsystem {
 	
-	Solenoid TotePusherSolenoid = new Solenoid(4); 
+	DoubleSolenoid TotePusherSolenoid = new DoubleSolenoid(RobotMap.TOTE_PUSHER_IN, RobotMap.TOTE_PUSHER_OUT); 
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -19,11 +22,11 @@ public class TotePusherSubsystem extends Subsystem {
     }
     
     public void pushOut(){
-    	TotePusherSolenoid.set(true);
+    	TotePusherSolenoid.set(DoubleSolenoid.Value.kForward);
     }
     
     public void pushIn(){
-    	TotePusherSolenoid.set(false);
+    	TotePusherSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
 
 }
