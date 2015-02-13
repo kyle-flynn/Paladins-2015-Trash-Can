@@ -4,6 +4,7 @@ import org.usfirst.frc.team3618.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -19,6 +20,10 @@ public class LiftSubsystem extends Subsystem {
 	public DigitalInput trLimitSwitch = new DigitalInput(RobotMap.TOP_LEFT_LIMIT);
 	public DigitalInput blLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LEFT_LIMIT);
 	public DigitalInput brLimitSwitch = new DigitalInput(RobotMap.BOTTOM_RIGHT_LIMIT);
+	public Encoder leftLiftEncoder = new Encoder(RobotMap.LEFT_LIFT_A,
+												 RobotMap.LEFT_LIFT_B);
+	public Encoder rightLiftEncoder = new Encoder(RobotMap.RIGHT_LIFT_A,
+			 									  RobotMap.RIGHT_LIFT_B);
 	
 //I used liftUp, stopLiftingUp, liftDown, and stopLiftingDown	
 	
