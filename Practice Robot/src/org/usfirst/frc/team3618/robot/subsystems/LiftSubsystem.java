@@ -12,16 +12,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class LiftSubsystem extends PIDSubsystem {
+public class LiftSubsystem extends Subsystem {
     
 	
 	DoubleSolenoid Arms = new DoubleSolenoid(RobotMap.TOTE_ARM_CLAMP_IN,RobotMap.TOTE_ARM_CLAMP_OUT);
-	public DigitalInput tlLimitSwitch = new DigitalInput(RobotMap.TOP_RIGHT_LIMIT);
-	public DigitalInput trLimitSwitch = new DigitalInput(RobotMap.TOP_LEFT_LIMIT);
-	public DigitalInput blLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LEFT_LIMIT);
-	public DigitalInput brLimitSwitch = new DigitalInput(RobotMap.BOTTOM_RIGHT_LIMIT);
 	
-		
 	
 	public static double toteHeight = 13.0;
 	//Technically totes are 12.1 inches but 13.0 gives space for error.
@@ -34,13 +29,7 @@ public class LiftSubsystem extends PIDSubsystem {
 	//Level 1 is 2 inches up (first tote just off of floor), 
 	//Level 2 is first tote high enough to clear a second tote and so on.
 	
-//I used liftUp, stopLiftingUp, liftDown, and stopLiftingDown	
-	
-	public LiftSubsystem(){
-		
-		getPIDController().setContinuous(false);
-		setSetpoint(levelsInches[currentLevel] * countsPerInch);
-	}
+
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands
@@ -60,20 +49,6 @@ public class LiftSubsystem extends PIDSubsystem {
     	Arms.set(DoubleSolenoid.Value.kReverse);
     }
     
-    public void liftUp(double output){
-    	leftLiftTalon.set(-output);
-    	rightLiftTalon.set(output);
-    }
-    
-    public void stopLifting(){
-    	leftLiftTalon.set(0);
-    	rightLiftTalon.set(0);
-    }
-    
-    public void liftDown(double output){
-    	leftLiftTalon.set(-output);
-    	rightLiftTalon.set(output);
-    }
     
     public void levelUp(){
     	if (currentLevel < 4)
