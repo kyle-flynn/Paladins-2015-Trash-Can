@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3618.robot.subsystems;
 
+
 import org.usfirst.frc.team3618.robot.Robot;
 import org.usfirst.frc.team3618.robot.RobotMap;
 
@@ -26,8 +27,10 @@ public class LeftPIDSubsystem extends PIDSubsystem {
         //                  to
         // enable() - Enables the PID controller.
     	
-    	super("LeftLiftSubsystem", 1.0, 0.0, 0.0);
-    	setSetpoint(Robot.liftSubsystem.countsAtLevel(0));
+    	super("LeftLiftSubsystem", 0.0025, 0.0, 0.0);
+    	
+    	setAbsoluteTolerance(0.5*Robot.countsPerInch);
+    	setInputRange(0.0, 41.0*Robot.countsPerInch);
     }
     
   
@@ -47,8 +50,10 @@ public class LeftPIDSubsystem extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	if(output < 0 && bLimitSwitch.get())
+    	if(output < 0 && bLimitSwitch.get()) {
     		output = 0;
+    		leftLiftEncoder.reset();
+    	}
   // 	if(output > 0 && tLimitSwitch.get())
     		//output = 0;
     	 leftLiftTalon.set(output);
@@ -56,10 +61,20 @@ public class LeftPIDSubsystem extends PIDSubsystem {
     
     public void jog(double output){
     	disable();
-    	leftLiftTalon.set(output);
+    	usePIDOutput(output);
     }
     
     public void stop(){
     	leftLiftTalon.set(0);
+    }
+    
+    public void levelUp(){
+    	if (Robot.currentLevel < 4)
+    		Robot.currentLevel++;   		
+    }
+    
+    public void levelDown(){
+    	if (Robot.currentLevel > 0)
+    		Robot.currentLevel--;
     }
 }

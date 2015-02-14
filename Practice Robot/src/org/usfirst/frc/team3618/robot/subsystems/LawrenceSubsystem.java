@@ -27,7 +27,7 @@ public class LawrenceSubsystem extends Subsystem {
     }
     
     public void jogElbow(double output) {
-    	elbowMotor.set(output);
+    	elbowMotor.set(-output);
     }
     
     public void jogShoulder(double output) {

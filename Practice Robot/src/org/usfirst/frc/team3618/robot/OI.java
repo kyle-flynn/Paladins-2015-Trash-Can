@@ -4,8 +4,13 @@ import org.usfirst.frc.team3618.robot.commands.ArmsDownCommand;
 import org.usfirst.frc.team3618.robot.commands.ArmsUpCommand;
 import org.usfirst.frc.team3618.robot.commands.JogDownCommand;
 import org.usfirst.frc.team3618.robot.commands.JogUpCommand;
+import org.usfirst.frc.team3618.robot.commands.LawrenceElbowExtend;
+import org.usfirst.frc.team3618.robot.commands.LawrenceElbowRetract;
+import org.usfirst.frc.team3618.robot.commands.LawrenceShoulderExtend;
+import org.usfirst.frc.team3618.robot.commands.LawrenceShoulderRetract;
 import org.usfirst.frc.team3618.robot.commands.LeftToteArmDownCommand;
 import org.usfirst.frc.team3618.robot.commands.LeftToteArmUpCommand;
+import org.usfirst.frc.team3618.robot.commands.MoveToLevelCommand;
 import org.usfirst.frc.team3618.robot.commands.TotePusherInCommand;
 import org.usfirst.frc.team3618.robot.commands.TotePusherOutCommand;
 
@@ -30,7 +35,13 @@ public class OI {
 	public Button armsDown = new JoystickButton(stick, 4);
 	public Button armsUp = new JoystickButton(stick, 3);
 	public Button leftToteArmUp = new JoystickButton(stick2, 3);
-		public Button leftToteArmDown = new JoystickButton(stick2, 2);
+	public Button leftToteArmDown = new JoystickButton(stick2, 2);
+	public Button levelUp = new JoystickButton(stick2, 11);
+	public Button levelDown = new JoystickButton(stick2, 10);
+	public Button extendLawrenceElbow = new JoystickButton(stick, 9);
+	public Button retractLawrenceElbow = new JoystickButton(stick, 7);
+	public Button extendLawrenceShoulder = new JoystickButton(stick, 8);
+	public Button retractLawrenceShoulder = new JoystickButton(stick, 10);
 	
 public OI(){
 	liftUp.whileHeld(new JogUpCommand());
@@ -41,8 +52,12 @@ public OI(){
 	armsUp.whenPressed(new ArmsUpCommand());
 	leftToteArmUp.whenPressed(new LeftToteArmUpCommand());
 	leftToteArmDown.whenPressed(new LeftToteArmDownCommand());
-	
-	
+	levelUp.whenPressed(new MoveToLevelCommand(true));
+	levelDown.whenPressed(new MoveToLevelCommand(false));
+	extendLawrenceElbow.whileHeld(new LawrenceElbowExtend());
+	retractLawrenceElbow.whileHeld(new LawrenceElbowRetract());
+	extendLawrenceShoulder.whileHeld(new LawrenceShoulderExtend());
+	retractLawrenceShoulder.whileHeld(new LawrenceShoulderRetract());
 }
 	
 	

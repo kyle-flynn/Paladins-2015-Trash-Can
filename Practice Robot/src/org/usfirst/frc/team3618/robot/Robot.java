@@ -34,6 +34,11 @@ public class Robot extends IterativeRobot {
 	public static final LeftPIDSubsystem leftPIDSubsystem = new LeftPIDSubsystem();
 	public static final LawrenceSubsystem lawrenceSubsystem = new LawrenceSubsystem();
 	public static OI oi;
+	
+	
+	public static int currentLevel = 0;
+	public static double countsPerInch = 102.7492;
+	
 
 	// Power Distribution Panel instance for seeing current
 	private PowerDistributionPanel pdp;
@@ -92,6 +97,9 @@ public class Robot extends IterativeRobot {
         		"LeftEncoder", Robot.leftPIDSubsystem.leftLiftEncoder.get());
         SmartDashboard.putNumber(
         		"RightEncoder", Robot.rightPIDSubsystem.rightLiftEncoder.get());
+        
+        SmartDashboard.putNumber("PID Current Level", currentLevel);
+        SmartDashboard.putNumber("PID Setpoint", leftPIDSubsystem.getSetpoint());
         //Periodic methods are called once every 20ms (50Hz) and that equates to 50 cycles per 1 second
     }
     
