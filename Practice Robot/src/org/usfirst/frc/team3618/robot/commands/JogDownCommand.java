@@ -22,8 +22,8 @@ public class JogDownCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.rightPIDSubsystem.jog(-0.33);
-    	Robot.leftPIDSubsystem.jog(-0.33);
+    	Robot.rightPIDSubsystem.jog(-0.195);
+    	Robot.leftPIDSubsystem.jog(-0.4);
     }
 
     // Make this return true when this Command no longer needs to run execute()

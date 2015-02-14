@@ -49,10 +49,10 @@ public class ChassisSubsystem extends Subsystem {
     }
     
     public void DriveMe (Joystick stick) { 
-    	double max = 0.5;
+    	double max = 0.75;
     	double x = stick.getX()*max;
     	double y = stick.getY()*max;
-    	double z = stick.getZ()*max*0.5; // always 1/2 again
+    	double z = stick.getZ()*max; // always 1/2 again
     	
     	myRobotDrive.mecanumDrive_Cartesian(x,y,z,0); 	   	
     }

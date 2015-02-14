@@ -20,16 +20,17 @@ public class RobotMap {
 	
 	
 	
+	
 	//PWM
 	
 	public static int LEFT_FRONT_DRIVE_MOTOR = 0;
 	public static int LEFT_REAR_DRIVE_MOTOR = 1;
-	public static int LAWRENCE_SHOULDER_MOTOR = 2;
+	public static int LAWRENCE_SHOULDER_MOTOR = 7;
 	public static int LEFT_LIFT_MOTOR = 3;
 	public static int RIGHT_REAR_DRIVE_MOTOR = 4;
 	public static int RIGHT_FRONT_DRIVE_MOTOR = 5;
 	public static int RIGHT_LIFT_MOTOR = 6;
-	public static int LAWRENCE_ELBOW_MOTOR = 7;
+	public static int LAWRENCE_ELBOW_MOTOR = 2;
 	
 	
 		

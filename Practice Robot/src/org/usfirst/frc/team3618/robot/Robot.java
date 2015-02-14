@@ -87,7 +87,16 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         
         // PDP Values are being sent to SmartDashboard constantly
-        SmartDashboard.putNumber("PDP Motor 0 Current", pdp.getCurrent(0));
+        SmartDashboard.putNumber("PDP Total Current", pdp.getTotalCurrent());
+        SmartDashboard.putNumber("Motor 2 Current (Elbow)", pdp.getCurrent(0));
+        SmartDashboard.putNumber("Motor 3 Current (Left Lift)", pdp.getCurrent(1));
+        SmartDashboard.putNumber("Motor 0 Current (LF Drive)", pdp.getCurrent(2));
+        SmartDashboard.putNumber("Motor 1 Current (LR Drive)", pdp.getCurrent(3));
+        SmartDashboard.putNumber("Motor 5 Current (RF Drive)", pdp.getCurrent(12));
+        SmartDashboard.putNumber("Motor 4 Current (RR Drive)", pdp.getCurrent(13));
+        SmartDashboard.putNumber("Motor 7 Current (Shoulder)", pdp.getCurrent(14));
+        SmartDashboard.putNumber("Motor 6 Current (Right Lift)", pdp.getCurrent(15));
+        
         SmartDashboard.putNumber("PDP Voltage", pdp.getVoltage());  
         SmartDashboard.putBoolean(
         		"BottomLeftLimit", Robot.leftPIDSubsystem.bLimitSwitch.get());
@@ -101,6 +110,9 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("PID Current Level", currentLevel);
         SmartDashboard.putNumber("PID Setpoint", leftPIDSubsystem.getSetpoint());
         //Periodic methods are called once every 20ms (50Hz) and that equates to 50 cycles per 1 second
+        
+        SmartDashboard.putData("Left Lift", leftPIDSubsystem.getPIDController());
+        SmartDashboard.putData("Right  Lift", rightPIDSubsystem.getPIDController());
     }
     
     /**

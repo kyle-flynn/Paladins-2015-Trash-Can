@@ -20,6 +20,7 @@ public class RightPIDSubsystem extends PIDSubsystem {
 	//public DigitalInput tLimitSwitch = new DigitalInput(RobotMap.TOP_RIGHT_LIMIT);
 	public DigitalInput bLimitSwitch = new DigitalInput(RobotMap.BOTTOM_RIGHT_LIMIT);
 	
+	public boolean hasReset;
 	
     // Initialize your subsystem here
     public RightPIDSubsystem() {
@@ -27,7 +28,7 @@ public class RightPIDSubsystem extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("RightLiftSubsystem", 0.0025, 0.0, 0.0);
+    	super("RightLiftSubsystem", 0.00225*0.9, 0.0002, 0.0);
     	
     	setAbsoluteTolerance(0.5*Robot.countsPerInch);
     	setInputRange(0.0, 41.0*Robot.countsPerInch);
@@ -48,17 +49,21 @@ public class RightPIDSubsystem extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	
-    	if(output < 0 && bLimitSwitch.get()) {
-    		output = 0;
-    		rightLiftEncoder.reset();
+    	if(hasReset || !getPIDController().isEnable()) {
+	    	if(output < 0 && bLimitSwitch.get()) {
+	    		output = 0;
+	    		rightLiftEncoder.reset();
+	    		hasReset = true;
+	    	}
+	    	output = -output; // make 'down' negative
+	    	double MaxOutput = 0.29;
+	    	if (output > MaxOutput)
+	    		output = MaxOutput;
+	    	else if (output < -MaxOutput)
+	    		output = -MaxOutput;
+	   	 	rightLiftTalon.set(output);
     	}
-    	//if(output > 0 && tLimitSwitch.get())
-    		//output = 0;
-    	output = -output; // make 'down' negative
-    	 rightLiftTalon.set(output);
-    	
-    }
+  }
     
     public void jog(double output){
     	disable();
@@ -68,4 +73,16 @@ public class RightPIDSubsystem extends PIDSubsystem {
     public void stop(){
     	rightLiftTalon.set(0);
     }
+    
+    @Override
+    public boolean onTarget() {
+    	double error = getSetpoint() - rightLiftEncoder.get();
+    	
+    	if(Math.abs(error) <= 0.4*Robot.countsPerInch) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
 }

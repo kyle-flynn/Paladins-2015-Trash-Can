@@ -30,18 +30,21 @@ public class OI {
 	
 	public Button liftUp = new JoystickButton(stick2, 4);
 	public Button liftDown = new JoystickButton(stick2, 5);
-	public Button pushIn = new JoystickButton(stick, 6);
-	public Button pushOut = new JoystickButton(stick, 5);
-	public Button armsDown = new JoystickButton(stick, 4);
-	public Button armsUp = new JoystickButton(stick, 3);
-	public Button leftToteArmUp = new JoystickButton(stick2, 3);
-	public Button leftToteArmDown = new JoystickButton(stick2, 2);
+	public Button pushIn = new JoystickButton(stick2, 2);
+	public Button pushOut = new JoystickButton(stick2, 3);
+	public Button armsDown = new JoystickButton(stick2, 9);
+	public Button armsUp = new JoystickButton(stick2, 8);
+	public Button leftToteArmUp = new JoystickButton(stick2, 7);
+	public Button leftToteArmDown = new JoystickButton(stick2, 6);
 	public Button levelUp = new JoystickButton(stick2, 11);
 	public Button levelDown = new JoystickButton(stick2, 10);
 	public Button extendLawrenceElbow = new JoystickButton(stick, 9);
 	public Button retractLawrenceElbow = new JoystickButton(stick, 7);
 	public Button extendLawrenceShoulder = new JoystickButton(stick, 8);
 	public Button retractLawrenceShoulder = new JoystickButton(stick, 10);
+	
+	// Drew wants stick2, button 2 to be toggle for tote clamping
+	// Drew wants stick2, button 3 to be toggle for tote pushing
 	
 public OI(){
 	liftUp.whileHeld(new JogUpCommand());

@@ -20,6 +20,8 @@ public class LeftPIDSubsystem extends PIDSubsystem {
 	//public DigitalInput tLimitSwitch = new DigitalInput(RobotMap.TOP_LEFT_LIMIT);
 	public DigitalInput bLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LEFT_LIMIT);
 	
+	public boolean hasReset;
+	
     // Initialize your subsystem here
     public LeftPIDSubsystem() {
         // Use these to get going:
@@ -27,10 +29,12 @@ public class LeftPIDSubsystem extends PIDSubsystem {
         //                  to
         // enable() - Enables the PID controller.
     	
-    	super("LeftLiftSubsystem", 0.0025, 0.0, 0.0);
+    	super("LeftLiftSubsystem", 0.0025*0.9, 0.0002, 0.0);
     	
     	setAbsoluteTolerance(0.5*Robot.countsPerInch);
     	setInputRange(0.0, 41.0*Robot.countsPerInch);
+    	
+    	hasReset = false;
     }
     
   
@@ -50,13 +54,21 @@ public class LeftPIDSubsystem extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	if(output < 0 && bLimitSwitch.get()) {
-    		output = 0;
-    		leftLiftEncoder.reset();
+    	if(hasReset || !getPIDController().isEnable()) {
+	    	double MaxOutput = 0.35;
+	    	if(output < 0 && bLimitSwitch.get()) {
+	    		output = 0;
+	    		leftLiftEncoder.reset();
+	    		Robot.currentLevel = 0;
+	    		hasReset = true;
+	    	}
+	    	if (output > MaxOutput) {
+	    		output = MaxOutput;    		
+	    	} else if (output < -MaxOutput) {
+	    		output = -MaxOutput;
+	    	}
+	    	leftLiftTalon.set(output);
     	}
-  // 	if(output > 0 && tLimitSwitch.get())
-    		//output = 0;
-    	 leftLiftTalon.set(output);
     }
     
     public void jog(double output){
@@ -69,12 +81,26 @@ public class LeftPIDSubsystem extends PIDSubsystem {
     }
     
     public void levelUp(){
-    	if (Robot.currentLevel < 4)
-    		Robot.currentLevel++;   		
+    	if (Robot.currentLevel < 4) {
+    		Robot.currentLevel++;   
+    	}
     }
     
     public void levelDown(){
-    	if (Robot.currentLevel > 0)
+    	if (Robot.currentLevel > 0) {
     		Robot.currentLevel--;
+    	}
     }
+    
+    @Override
+    public boolean onTarget() {
+    	double error = getSetpoint() - leftLiftEncoder.get();
+    	
+    	if(Math.abs(error) <= 0.4*Robot.countsPerInch) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
 }
