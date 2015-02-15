@@ -22,18 +22,18 @@ public class LawrenceDefaultCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (OI.shoulderUp.get())
+    	if (Robot.oi.shoulderUp.get())
     		Robot.lawrenceSubsystem.jogShoulder(0.67);
-    	else if (OI.shoulderDown.get())
+    	else if (Robot.oi.shoulderDown.get())
     		Robot.lawrenceSubsystem.jogShoulder(-0.2); // spring assisted
     	else
     		Robot.lawrenceSubsystem.stopShoulder();
 
     	// let Drew press harder to move faster (beyond the 50% trigger point, anyway)
-    	if (OI.stick2.getRawAxis(2) > 0.5) // Left Trigger
-    		Robot.lawrenceSubsystem.jogElbow(LawrenceSubsystem.MAX_ELBOW_SPEED*OI.stick2.getRawAxis(2)); // spool up
-    	else if (OI.stick2.getRawAxis(3) > 0.5) // Right Trigger
-    		Robot.lawrenceSubsystem.jogElbow(-LawrenceSubsystem.MAX_ELBOW_SPEED*OI.stick2.getRawAxis(3)); // unspool down
+    	if (Robot.oi.DrewsXBoxController.getRawAxis(2) > 0.5) // Left Trigger
+    		Robot.lawrenceSubsystem.jogElbow(LawrenceSubsystem.MAX_ELBOW_SPEED*Robot.oi.DrewsXBoxController.getRawAxis(2)); // spool up
+    	else if (Robot.oi.DrewsXBoxController.getRawAxis(3) > 0.5) // Right Trigger
+    		Robot.lawrenceSubsystem.jogElbow(-LawrenceSubsystem.MAX_ELBOW_SPEED*Robot.oi.DrewsXBoxController.getRawAxis(3)); // unspool down
     	else 
     		Robot.lawrenceSubsystem.stopElbow();
     }

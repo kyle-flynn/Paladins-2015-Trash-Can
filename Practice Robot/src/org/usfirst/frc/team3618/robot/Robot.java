@@ -1,17 +1,20 @@
 
 package org.usfirst.frc.team3618.robot;
 
+import org.usfirst.frc.team3618.robot.commands.MoveToLevelCommand;
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LawrenceSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LeftPIDSubsystem;
-import org.usfirst.frc.team3618.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team3618.robot.subsystems.ClampSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.RightPIDSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.ToteArmSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.TotePusherSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.VisionSubsystem;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,7 +29,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final ChassisSubsystem chassisSubsystem = new ChassisSubsystem();
-	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
+	public static final ClampSubsystem liftSubsystem = new ClampSubsystem();
 	public static final VisionSubsystem visionSubsystem = new VisionSubsystem();
 	public static final TotePusherSubsystem totePusherSubsystem = new TotePusherSubsystem();
 	public static final ToteArmSubsystem toteArmSubsystem = new ToteArmSubsystem();
@@ -42,6 +45,7 @@ public class Robot extends IterativeRobot {
 
 	// Power Distribution Panel instance for seeing current
 	private PowerDistributionPanel pdp;
+	private int lastPress = -1; // no press active
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -69,7 +73,9 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+		Compressor c = new Compressor();
 		
+		c.stop();
     }
 
     /**
@@ -116,6 +122,23 @@ public class Robot extends IterativeRobot {
         
         SmartDashboard.putNumber("ShoulderEncoder", Robot.lawrenceSubsystem.shoulderEncoder.get());
         SmartDashboard.putNumber("Elbow Encoder", Robot.lawrenceSubsystem.elbowEncoder.get());
+        
+        SmartDashboard.putBoolean("Awful Left Encoder?", Robot.leftPIDSubsystem.isMyEncoderAwful);
+        SmartDashboard.putBoolean("Awful Right Encoder?", Robot.rightPIDSubsystem.isMyEncoderAwful);
+        
+        int thisPress = oi.DrewsXBoxController.getPOV();
+        SmartDashboard.putNumber("This press", thisPress);
+        if(thisPress != lastPress) {
+        	Command move;
+        	if (thisPress == 0) {
+        		move = new MoveToLevelCommand(true);
+        		move.start();
+        	}else if(thisPress == 180){
+	        	move = new MoveToLevelCommand(false);
+	        	move.start();
+        	}
+            lastPress = thisPress;
+        }
     }
     
     /**

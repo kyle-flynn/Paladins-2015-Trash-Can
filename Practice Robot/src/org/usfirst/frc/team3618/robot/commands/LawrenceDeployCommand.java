@@ -26,7 +26,7 @@ public class LawrenceDeployCommand extends Command {
     		Robot.lawrenceSubsystem.elbowEncoder.reset(); // must have been up when we started
     	// start the motors moving
 		Robot.lawrenceSubsystem.jogShoulder(0.67);
-		Robot.lawrenceSubsystem.jogElbow(/*LawrenceSubsystem.MAX_ELBOW_SPEED*/1.0); // unspool
+		Robot.lawrenceSubsystem.jogElbow(1.0); // unspool
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,11 +39,13 @@ public class LawrenceDeployCommand extends Command {
     		Robot.lawrenceSubsystem.stopShoulder();
     	}
     	else if (Robot.lawrenceSubsystem.shoulderEncoder.get() >= shoulderStopPoint/3) {
-    		if (Robot.lawrenceSubsystem.elbowEncoder.get() > elbowStopPoint*0.75)
+    		if (Robot.lawrenceSubsystem.elbowEncoder.get() > elbowStopPoint*0.85)
     			Robot.lawrenceSubsystem.jogShoulder(0.5); // but can be faster towards the end
-    		else
-    			Robot.lawrenceSubsystem.jogShoulder(0.37); // cut speed once we get moving
+    		else if (Robot.lawrenceSubsystem.elbowEncoder.get() >= elbowStopPoint*.35)
+    			Robot.lawrenceSubsystem.jogShoulder(0.43); // cut speed once we get moving
+    		else Robot.lawrenceSubsystem.stopShoulder();
     	}
+    	else Robot.lawrenceSubsystem.jogShoulder(0.67);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -56,8 +56,8 @@ public class MoveToLevelCommand extends Command {
     protected boolean isFinished() {
     	// If both are on target, or if one is on target and the other has an encoder reading of '0', then consider it finished
     	if ((Robot.rightPIDSubsystem.onTarget() && Robot.leftPIDSubsystem.onTarget()) 
-    			|| (Robot.rightPIDSubsystem.onTarget() && Robot.leftPIDSubsystem.leftLiftEncoder.get() == 0)
-    			|| (Robot.leftPIDSubsystem.onTarget() && Robot.rightPIDSubsystem.rightLiftEncoder.get() == 0)) {
+    			|| (Robot.leftPIDSubsystem.isDeadEncoder(timeSinceInitialized()))
+    			|| (Robot.rightPIDSubsystem.isDeadEncoder(timeSinceInitialized()))) {
     		return true;
     	} else {
     		return false;

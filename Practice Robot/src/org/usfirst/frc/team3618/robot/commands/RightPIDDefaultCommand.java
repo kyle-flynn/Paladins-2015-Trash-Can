@@ -7,13 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class JogUpCommand extends Command {
+public class RightPIDDefaultCommand extends Command {
 
-    public JogUpCommand() {
+    public RightPIDDefaultCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.rightPIDSubsystem);
-    	requires(Robot.leftPIDSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -22,8 +21,12 @@ public class JogUpCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.rightPIDSubsystem.jog(0.32);
-    	Robot.leftPIDSubsystem.jog(0.4);
+    	// axis upsidedown
+    	if(Robot.oi.DrewsXBoxController.getRawAxis(5) < -0.5)
+    		Robot.rightPIDSubsystem.jog(Robot.rightPIDSubsystem.upSpeed);
+    	else if(Robot.oi.DrewsXBoxController.getRawAxis(5) > 0.5)
+    		Robot.rightPIDSubsystem.jog(Robot.rightPIDSubsystem.downSpeed);
+    	else Robot.rightPIDSubsystem.stop();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,6 +38,7 @@ public class JogUpCommand extends Command {
     protected void end() {
     	Robot.rightPIDSubsystem.stop();
     	Robot.leftPIDSubsystem.stop();
+    	
     }
 
     // Called when another command which requires one or more of the same

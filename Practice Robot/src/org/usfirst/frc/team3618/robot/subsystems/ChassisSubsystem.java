@@ -54,7 +54,7 @@ public class ChassisSubsystem extends Subsystem {
     	double y = stick.getY()*max;
     	double z = stick.getZ()*max; // always 1/2 again
     	
-    	myRobotDrive.mecanumDrive_Cartesian(x,y,z,0); 	   	
+    	myRobotDrive.mecanumDrive_Cartesian(x,y,0.5*z,0); 	   	
     }
     public void DriveMe(float speed) {
     	myRobotDrive.mecanumDrive_Cartesian(speed,0,0,0); 	   	

@@ -7,23 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class JogDownCommand extends Command {
+public class UnclampCommand extends Command {
 
-    public JogDownCommand() {
+    public UnclampCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.rightPIDSubsystem);
-    	requires(Robot.leftPIDSubsystem);
+    	requires(Robot.liftSubsystem);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.liftSubsystem.unClamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.rightPIDSubsystem.jog(-0.195);
-    	Robot.leftPIDSubsystem.jog(-0.4);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,13 +31,10 @@ public class JogDownCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.rightPIDSubsystem.stop();
-    	Robot.leftPIDSubsystem.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

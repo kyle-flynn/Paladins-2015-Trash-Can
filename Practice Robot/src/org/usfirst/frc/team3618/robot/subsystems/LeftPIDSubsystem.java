@@ -3,6 +3,7 @@ package org.usfirst.frc.team3618.robot.subsystems;
 
 import org.usfirst.frc.team3618.robot.Robot;
 import org.usfirst.frc.team3618.robot.RobotMap;
+import org.usfirst.frc.team3618.robot.commands.LeftPIDDefaultCommand;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -21,6 +22,13 @@ public class LeftPIDSubsystem extends PIDSubsystem {
 	public DigitalInput bLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LEFT_LIMIT);
 	
 	public boolean hasReset;
+	public boolean isMyEncoderAwful = false;
+	
+	public double upSpeed = 0.4;
+	public double downSpeed = -0.4;
+	
+	private double lastCount = 0;
+	private double lastTime = 0.0;
 	
     // Initialize your subsystem here
     public LeftPIDSubsystem() {
@@ -42,6 +50,7 @@ public class LeftPIDSubsystem extends PIDSubsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new LeftPIDDefaultCommand()); 
     }
     
     protected double returnPIDInput() {
@@ -101,6 +110,17 @@ public class LeftPIDSubsystem extends PIDSubsystem {
     	} else {
     		return false;
     	}
+    }
+    
+    public boolean isDeadEncoder(double time) {
+    	int curCount = leftLiftEncoder.get();
+    	if(curCount != lastCount) {
+    		lastTime = time;
+    		lastCount = curCount;
+    	}
+    	if ((time - lastTime) >= 0.5)
+    		isMyEncoderAwful = true;
+    	return isMyEncoderAwful;
     }
     
 }
