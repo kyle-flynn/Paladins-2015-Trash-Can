@@ -113,6 +113,9 @@ public class Robot extends IterativeRobot {
         
         SmartDashboard.putData("Left Lift", leftPIDSubsystem.getPIDController());
         SmartDashboard.putData("Right  Lift", rightPIDSubsystem.getPIDController());
+        
+        SmartDashboard.putNumber("ShoulderEncoder", Robot.lawrenceSubsystem.shoulderEncoder.get());
+        SmartDashboard.putNumber("Elbow Encoder", Robot.lawrenceSubsystem.elbowEncoder.get());
     }
     
     /**

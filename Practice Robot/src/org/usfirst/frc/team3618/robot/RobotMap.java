@@ -53,8 +53,6 @@ public class RobotMap {
 	//DIO
 		
 		//Limit Switches
-	//public static int TOP_RIGHT_LIMIT = 8;
-	//public static int TOP_LEFT_LIMIT = 8;
 	public static int BOTTOM_LEFT_LIMIT = 5;
 	public static int BOTTOM_RIGHT_LIMIT = 4;
 		//Encoders
@@ -66,10 +64,10 @@ public class RobotMap {
 	//public static int REAR_LEFT_WHEEL_B = 8;
 	//public static int REAR_RIGHT_WHEEL_A = 8;
 	//public static int REAR_RIGHT_WHEEL_B = 8;
-	public static int LAWRENCE_SHOULDER_A = 6;
-	public static int LAWRENCE_SHOULDER_B = 7;
-	public static int LAWRENCE_ELBOW_A = 8;
-	public static int LAWRENCE_ELBOW_B = 9;
+	public static int LAWRENCE_SHOULDER_A = 7;
+	public static int LAWRENCE_SHOULDER_B = 6;
+	public static int LAWRENCE_ELBOW_A = 9;
+	public static int LAWRENCE_ELBOW_B = 8;
 	public static int LEFT_LIFT_A = 0;
 	public static int LEFT_LIFT_B = 1;
 	public static int RIGHT_LIFT_A = 3;
