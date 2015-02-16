@@ -56,8 +56,8 @@ public class ChassisSubsystem extends Subsystem {
     	
     	myRobotDrive.mecanumDrive_Cartesian(x,y,0.5*z,0); 	   	
     }
-    public void DriveMe(float speed) {
-    	myRobotDrive.mecanumDrive_Cartesian(speed,0,0,0); 	   	
+    public void DriveMe(double speed) {
+    	myRobotDrive.mecanumDrive_Cartesian(0,-speed,0,0); 	   	
     }
         
     public void StopMe () {

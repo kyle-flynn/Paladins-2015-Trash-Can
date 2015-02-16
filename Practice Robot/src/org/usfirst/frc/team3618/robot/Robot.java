@@ -2,6 +2,7 @@
 package org.usfirst.frc.team3618.robot;
 
 import org.usfirst.frc.team3618.robot.commands.MoveToLevelCommand;
+import org.usfirst.frc.team3618.robot.commands.autonomous.AutonomousCommand;
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LawrenceSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LeftPIDSubsystem;
@@ -17,6 +18,7 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -47,21 +49,39 @@ public class Robot extends IterativeRobot {
 	private PowerDistributionPanel pdp;
 	private int lastPress = -1; // no press active
 	
+	private SendableChooser autoChooser;
+	private Command autonomousCommand;
+	
+	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    public void robotInit() {
+   	
+	public void robotInit() {
 		// Creating instances of objects
     	oi = new OI();
     	pdp = new PowerDistributionPanel(); 
+    	
+    	
+    	
+    	autoChooser = new SendableChooser();
+    	autoChooser.addDefault("Drive Forward Only", 1);
+    	autoChooser.addObject("One to Score", 2);
+    	autoChooser.addObject("2 Totes", 3);
+    	autoChooser.addObject("3 Totes", 4);
+    	SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
+	
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
     public void autonomousInit() {
+    	autonomousCommand = new AutonomousCommand((int) autoChooser.getSelected());
+    	autonomousCommand.start();
+    	
      
     }
 
