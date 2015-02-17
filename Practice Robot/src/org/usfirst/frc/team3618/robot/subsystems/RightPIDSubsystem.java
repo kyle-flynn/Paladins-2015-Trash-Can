@@ -62,10 +62,11 @@ public class RightPIDSubsystem extends PIDSubsystem {
 	    	if(output < 0 && bLimitSwitch.get()) {
 	    		output = 0;
 	    		rightLiftEncoder.reset();
+	    		isMyEncoderAwful = false;
 	    		hasReset = true;
 	    	}
 	    	output = -output; // make 'down' negative
-	    	double MaxOutput = 0.29;
+	    	double MaxOutput = 0.5;
 	    	if (output > MaxOutput)
 	    		output = MaxOutput;
 	    	else if (output < -MaxOutput)
@@ -77,6 +78,11 @@ public class RightPIDSubsystem extends PIDSubsystem {
     public void jog(double output){
     	disable();
     	usePIDOutput(output);
+    }
+    
+    //Testing method that should NOT be used in the code
+    public void bypassPIDJog(double output) {
+    	rightLiftTalon.set(output);
     }
     
     public void stop(){

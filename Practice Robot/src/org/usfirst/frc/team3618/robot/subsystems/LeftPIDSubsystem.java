@@ -64,12 +64,13 @@ public class LeftPIDSubsystem extends PIDSubsystem {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     	if(hasReset || !getPIDController().isEnable()) {
-	    	double MaxOutput = 0.35;
+	    	double MaxOutput = 0.5;
 	    	if(output < 0 && bLimitSwitch.get()) {
 	    		output = 0;
 	    		leftLiftEncoder.reset();
 	    		Robot.currentLevel = 0;
 	    		hasReset = true;
+	    		isMyEncoderAwful = false;
 	    	}
 	    	if (output > MaxOutput) {
 	    		output = MaxOutput;    		
@@ -83,6 +84,11 @@ public class LeftPIDSubsystem extends PIDSubsystem {
     public void jog(double output){
     	disable();
     	usePIDOutput(output);
+    }
+    
+    //Testing method that should NOT be used in the code
+    public void bypassPIDJog(double output) {
+    	leftLiftTalon.set(output);
     }
     
     public void stop(){

@@ -25,8 +25,8 @@ public class OI {
 //	public Button pushOut = new JoystickButton(stick2, 3);   Being removed from robot
 	public Button unclamp = new JoystickButton(DrewsXBoxController, 2);
 	public Button clamp = new JoystickButton(DrewsXBoxController, 1);
-	public Button leftToteArmUp = new JoystickButton(DrewsXBoxController, 7);
-	public Button leftToteArmDown = new JoystickButton(DrewsXBoxController, 8);
+	public Button leftToteArmUp = new JoystickButton(stick, 4);
+	public Button leftToteArmDown = new JoystickButton(stick, 3);
 	public Button shoulderUp = new JoystickButton(DrewsXBoxController,5); // used in LawrenceDefaultCommand
 	public Button shoulderDown = new JoystickButton(DrewsXBoxController,6); // used in LawrenceDefaultCommand
 	public Button deployLawrence = new JoystickButton(DrewsXBoxController,3);

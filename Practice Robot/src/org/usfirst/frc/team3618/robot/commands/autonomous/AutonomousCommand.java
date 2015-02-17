@@ -1,5 +1,9 @@
 package org.usfirst.frc.team3618.robot.commands.autonomous;
 
+import org.usfirst.frc.team3618.robot.commands.ClampCommand;
+import org.usfirst.frc.team3618.robot.commands.MoveToLevelCommand;
+import org.usfirst.frc.team3618.robot.commands.UnclampCommand;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -28,13 +32,22 @@ public class AutonomousCommand extends CommandGroup {
         // arm.
     	
     	if (selection == 1){
-    		addSequential(new AutonDriveCommand(.3), 2.0);
+    		addSequential(new AutonDriveCommand(.3, .0), 2.0);
     		end();
     		
     	}
     	
     	else if (selection == 2){
-    		
+    		addSequential(new ClampCommand());
+    		addSequential(new MoveToLevelCommand(true));
+    		addSequential(new MoveToLevelCommand(true));
+    		//Might be an issue since we haven't gone down yet
+    		addSequential(new AutonDriveCommand(0, .4), 1.25);
+    		addSequential(new AutonDriveCommand(.5, 0), 2.5);
+    		addSequential(new MoveToLevelCommand(false));
+    		addSequential(new MoveToLevelCommand(false));
+    		addSequential(new UnclampCommand());
+    		end();    		
     	}
     	
     	else if (selection == 3){

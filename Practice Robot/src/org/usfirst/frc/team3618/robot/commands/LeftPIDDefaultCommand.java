@@ -25,8 +25,10 @@ public class LeftPIDDefaultCommand extends Command {
     	// axis upsidedown
     	if(Robot.oi.DrewsXBoxController.getRawAxis(1) < -0.5)
     		Robot.leftPIDSubsystem.jog(Robot.leftPIDSubsystem.upSpeed);
+    		//Robot.leftPIDSubsystem.bypassPIDJog(0.5);
     	else if(Robot.oi.DrewsXBoxController.getRawAxis(1) > 0.5)
     		Robot.leftPIDSubsystem.jog(Robot.leftPIDSubsystem.downSpeed);
+    		//Robot.leftPIDSubsystem.bypassPIDJog(-0.5);
     	else Robot.leftPIDSubsystem.stop();
     }
 

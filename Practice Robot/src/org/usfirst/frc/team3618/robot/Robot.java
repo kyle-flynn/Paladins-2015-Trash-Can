@@ -93,9 +93,9 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-		Compressor c = new Compressor();
-		
-		c.stop();
+//		Compressor c = new Compressor();
+//		
+//		c.stop();
     }
 
     /**
