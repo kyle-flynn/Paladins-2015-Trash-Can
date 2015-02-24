@@ -11,17 +11,30 @@ public class AutonDriveCommand extends Command {
 
 	private double speed;
 	private double rotation;
+	private double angle;
+	
 	
     public AutonDriveCommand(double speed, double rotation) {
     	this.speed = speed;
     	this.rotation = rotation;
+    	this.angle = 0;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassisSubsystem);
     }
 
+    public AutonDriveCommand(double speed, double rotation, double angle) {
+    	this.speed = speed;
+    	this.rotation = rotation;
+    	this.angle = angle;
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.chassisSubsystem);
+    }
+    
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.chassisSubsystem.firstGyro.reset();
     	
     }
 
@@ -32,7 +45,12 @@ public class AutonDriveCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	if(angle == 0) {
+    		return false;
+    	}else {
+    		return angle == Robot.chassisSubsystem.firstGyro.getAngle();
+    	}
+    	
     }
 
     // Called once after isFinished returns true

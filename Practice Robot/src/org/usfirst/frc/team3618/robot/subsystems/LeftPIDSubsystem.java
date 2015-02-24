@@ -24,8 +24,11 @@ public class LeftPIDSubsystem extends PIDSubsystem {
 	public boolean hasReset;
 	public boolean isMyEncoderAwful = false;
 	
-	public double upSpeed = 0.4;
-	public double downSpeed = -0.4;
+//	public double upSpeed = 0.385;
+//	public double downSpeed = -0.43;
+	
+	public double upSpeed = 0.75;
+	public double downSpeed = -0.725;
 	
 	private double lastCount = 0;
 	private double lastTime = 0.0;
@@ -37,7 +40,7 @@ public class LeftPIDSubsystem extends PIDSubsystem {
         //                  to
         // enable() - Enables the PID controller.
     	
-    	super("LeftLiftSubsystem", 0.0025*0.9, 0.0002, 0.0);
+    	super("LeftLiftSubsystem", 0.00125, 0.0001, 0.0);
     	
     	setAbsoluteTolerance(0.5*Robot.countsPerInch);
     	setInputRange(0.0, 41.0*Robot.countsPerInch);
@@ -64,7 +67,7 @@ public class LeftPIDSubsystem extends PIDSubsystem {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     	if(hasReset || !getPIDController().isEnable()) {
-	    	double MaxOutput = 0.5;
+	    	double MaxOutput = 0.75;
 	    	if(output < 0 && bLimitSwitch.get()) {
 	    		output = 0;
 	    		leftLiftEncoder.reset();

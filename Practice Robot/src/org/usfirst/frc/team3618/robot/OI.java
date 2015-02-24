@@ -1,11 +1,12 @@
 package org.usfirst.frc.team3618.robot;
 
-import org.usfirst.frc.team3618.robot.commands.StowLawrenceCommand;
-import org.usfirst.frc.team3618.robot.commands.UnclampCommand;
 import org.usfirst.frc.team3618.robot.commands.ClampCommand;
 import org.usfirst.frc.team3618.robot.commands.LawrenceDeployCommand;
 import org.usfirst.frc.team3618.robot.commands.LeftToteArmDownCommand;
 import org.usfirst.frc.team3618.robot.commands.LeftToteArmUpCommand;
+import org.usfirst.frc.team3618.robot.commands.ResetGyroCommand;
+import org.usfirst.frc.team3618.robot.commands.StowLawrenceCommand;
+import org.usfirst.frc.team3618.robot.commands.UnclampCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -25,13 +26,14 @@ public class OI {
 //	public Button pushOut = new JoystickButton(stick2, 3);   Being removed from robot
 	public Button unclamp = new JoystickButton(DrewsXBoxController, 2);
 	public Button clamp = new JoystickButton(DrewsXBoxController, 1);
-	public Button leftToteArmUp = new JoystickButton(stick, 4);
-	public Button leftToteArmDown = new JoystickButton(stick, 3);
+	public Button leftToteArmUp = new JoystickButton(stick, 2);
+	public Button leftToteArmDown = new JoystickButton(stick, 1);
+	public Button resetGyro = new JoystickButton(stick, 3);
 	public Button shoulderUp = new JoystickButton(DrewsXBoxController,5); // used in LawrenceDefaultCommand
 	public Button shoulderDown = new JoystickButton(DrewsXBoxController,6); // used in LawrenceDefaultCommand
 	public Button deployLawrence = new JoystickButton(DrewsXBoxController,3);
 	public Button stowLawrence = new JoystickButton(DrewsXBoxController, 4);
-	
+	public Button toggleZAxis = new JoystickButton(stick, 11);
 		
 	// Drew wants stick2, button 2 to be toggle for tote clamping
 	// Drew wants stick2, button 3 to be toggle for tote pushing
@@ -69,6 +71,7 @@ public OI(){
 	clamp.whenPressed(new ClampCommand());
 	leftToteArmUp.whenPressed(new LeftToteArmUpCommand());
 	leftToteArmDown.whenPressed(new LeftToteArmDownCommand());
+	resetGyro.whenPressed(new ResetGyroCommand());
 	deployLawrence.whenPressed(new LawrenceDeployCommand());
 	stowLawrence.whenPressed(new StowLawrenceCommand());
 }

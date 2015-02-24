@@ -42,7 +42,7 @@ public class AutonomousCommand extends CommandGroup {
     		addSequential(new MoveToLevelCommand(true));
     		addSequential(new MoveToLevelCommand(true));
     		//Might be an issue since we haven't gone down yet
-    		addSequential(new AutonDriveCommand(0, .4), 1.25);
+    		addSequential(new AutonDriveCommand(0, .4, 90));
     		addSequential(new AutonDriveCommand(.5, 0), 2.5);
     		addSequential(new MoveToLevelCommand(false));
     		addSequential(new MoveToLevelCommand(false));

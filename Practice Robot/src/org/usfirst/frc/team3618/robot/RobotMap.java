@@ -23,6 +23,19 @@ public class RobotMap {
 	
 	//PWM
 	
+	
+	/* On the competition bot
+	public static int LEFT_FRONT_DRIVE_MOTOR = 0;
+	public static int LEFT_REAR_DRIVE_MOTOR = 1;
+	public static int LAWRENCE_SHOULDER_MOTOR = 7;
+	public static int LEFT_LIFT_MOTOR = 3;
+	public static int RIGHT_REAR_DRIVE_MOTOR = 4;
+	public static int RIGHT_FRONT_DRIVE_MOTOR = 5;
+	public static int RIGHT_LIFT_MOTOR = 6;
+	public static int LAWRENCE_ELBOW_MOTOR = 2;
+	*/
+	
+	//Practice bot
 	public static int LEFT_FRONT_DRIVE_MOTOR = 0;
 	public static int LEFT_REAR_DRIVE_MOTOR = 1;
 	public static int LAWRENCE_SHOULDER_MOTOR = 7;
@@ -33,7 +46,9 @@ public class RobotMap {
 	public static int LAWRENCE_ELBOW_MOTOR = 2;
 	
 	
-		
+	
+	
+	/*Competition bot
 	//Solenoids
 					//tote clamp double solenoids ->
 		
@@ -49,12 +64,37 @@ public class RobotMap {
 					//Tote pusher solenoid ->
 		public static int TOTE_PUSHER_OUT = 0;
 		public static int TOTE_PUSHER_IN = 2;
+	*/
+	
+	
+	//Practice bot
+	public static int LEFT_TOTE_ARM_OUT = 4;
+	public static int LEFT_TOTE_ARM_IN = 5;
+	
+	public static int CLAMP_CLOSED = 2;
+	public static int CLAMP_OPEN = 3;
+	//Pretty sure this doesn't exist anymore
+	public static int TOTE_PUSHER_OUT = 0;
+	public static int TOTE_PUSHER_IN = 1;
+		
 		
 	//DIO
 		
 		//Limit Switches
+		/*Competition bot
 	public static int BOTTOM_LEFT_LIMIT = 5;
 	public static int BOTTOM_RIGHT_LIMIT = 4;
+	*/
+		
+	
+	//Practice bot
+	public static int BOTTOM_LEFT_LIMIT = 0;
+	public static int BOTTOM_RIGHT_LIMIT = 1;
+	
+	
+	
+	
+	/*Competition bot
 		//Encoders
 	//public static int FRONT_LEFT_WHEEL_A = 8;	
 	//public static int FRONT_LEFT_WHEEL_B = 8;
@@ -72,6 +112,22 @@ public class RobotMap {
 	public static int LEFT_LIFT_B = 1;
 	public static int RIGHT_LIFT_A = 3;
 	public static int RIGHT_LIFT_B = 2;
+	*/
+	
+	
+	//Practice bot
+	public static int LEFT_LIFT_A = 2;
+	public static int LEFT_LIFT_B = 3;
+	public static int RIGHT_LIFT_A = 4;
+	public static int RIGHT_LIFT_B = 5;
+	
+	public static int LAWRENCE_SHOULDER_A = 6;
+	public static int LAWRENCE_SHOULDER_B = 7;
+	public static int LAWRENCE_ELBOW_A = 8;
+	public static int LAWRENCE_ELBOW_B = 9;
+	
+	
+	
 	
 	//Encoders
 	

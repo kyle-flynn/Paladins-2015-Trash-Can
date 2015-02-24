@@ -21,8 +21,11 @@ public class RightPIDSubsystem extends PIDSubsystem {
 	//public DigitalInput tLimitSwitch = new DigitalInput(RobotMap.TOP_RIGHT_LIMIT);
 	public DigitalInput bLimitSwitch = new DigitalInput(RobotMap.BOTTOM_RIGHT_LIMIT);
 	
-	public double upSpeed = 0.32;
-	public double downSpeed = -0.195;
+//	public double upSpeed = 0.38;
+//	public double downSpeed = -0.34;
+
+	public double upSpeed = 0.585;
+	public double downSpeed = -0.575;
 	
 	public boolean hasReset;
 	public boolean isMyEncoderAwful = false;
@@ -36,7 +39,7 @@ public class RightPIDSubsystem extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("RightLiftSubsystem", 0.00225*0.9, 0.0002, 0.0);
+    	super("RightLiftSubsystem", 0.00125, 0.0001, 0.0);
     	
     	setAbsoluteTolerance(0.5*Robot.countsPerInch);
     	setInputRange(0.0, 41.0*Robot.countsPerInch);
@@ -66,7 +69,7 @@ public class RightPIDSubsystem extends PIDSubsystem {
 	    		hasReset = true;
 	    	}
 	    	output = -output; // make 'down' negative
-	    	double MaxOutput = 0.5;
+	    	double MaxOutput = 0.75;
 	    	if (output > MaxOutput)
 	    		output = MaxOutput;
 	    	else if (output < -MaxOutput)

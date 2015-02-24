@@ -6,6 +6,7 @@ import org.usfirst.frc.team3618.robot.RobotMap;
 import org.usfirst.frc.team3618.robot.commands.DriveCommand;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
@@ -19,12 +20,18 @@ public class ChassisSubsystem extends Subsystem {
 											  RobotMap.LEFT_REAR_DRIVE_MOTOR,
 											  RobotMap.RIGHT_FRONT_DRIVE_MOTOR,
 											  RobotMap.RIGHT_REAR_DRIVE_MOTOR);
+	public Gyro firstGyro = new Gyro(0);
+	
+	
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
 	 public ChassisSubsystem() {
 	    	myRobotDrive.setInvertedMotor(MotorType.kRearRight, true);
 	    	myRobotDrive.setInvertedMotor(MotorType.kFrontRight, true);
+	    	firstGyro.reset();
+	    	
 //	    	frontRight.reset();
 //	    	backRight.reset();
 //	    	frontLeft.reset();
@@ -50,11 +57,19 @@ public class ChassisSubsystem extends Subsystem {
     
     public void DriveMe (Joystick stick) { 
     	double max = 0.75;
-    	double x = stick.getX()*max;
-    	double y = stick.getY()*max;
+    	double x = stick.getX();
+    	double y = stick.getY();
     	double z = stick.getZ()*max; // always 1/2 again
     	
-    	myRobotDrive.mecanumDrive_Cartesian(x,y,0.5*z,0); 	   	
+    	myRobotDrive.mecanumDrive_Cartesian(x,y,z,Robot.chassisSubsystem.firstGyro.getAngle()); 	   	
+    }
+    public void DriveMe (Joystick stick, double limit) { 
+    	double max = 0.75;
+    	double x = stick.getX();
+    	double y = stick.getY();
+    	double z = stick.getZ()*max*limit; // always 1/2 again
+    	
+    	myRobotDrive.mecanumDrive_Cartesian(x,y,z,Robot.chassisSubsystem.firstGyro.getAngle()); 	   	
     }
     public void DriveMe(double speed, double rotation) {
     	myRobotDrive.mecanumDrive_Cartesian(0,-speed,0,rotation); 	   	
@@ -64,6 +79,7 @@ public class ChassisSubsystem extends Subsystem {
     public void StopMe () {
     	myRobotDrive.drive(0, 0);
     }
+    
 
 	}
 
