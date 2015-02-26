@@ -23,13 +23,14 @@ public class StowLawrenceCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.lawrenceSubsystem.elbowEncoder.get() <= 0)
+    	if((Robot.lawrenceSubsystem.elbowEncoder.get() <= 0) ||
+    		(Robot.lawrenceSubsystem.elbowEncoder.get() <= Robot.lawrenceSubsystem.shoulderEncoder.get()/3))
     		Robot.lawrenceSubsystem.stopElbow();
     	else Robot.lawrenceSubsystem.jogElbow(-LawrenceSubsystem.MAX_ELBOW_SPEED);
     	
     	if(Robot.lawrenceSubsystem.shoulderEncoder.get() <= 0)
     		Robot.lawrenceSubsystem.stopShoulder();
-    	else Robot.lawrenceSubsystem.jogShoulder(-0.2);
+    	else Robot.lawrenceSubsystem.jogShoulder(-0.35);
     	
     }
 

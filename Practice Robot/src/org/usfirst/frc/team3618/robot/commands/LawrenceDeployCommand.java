@@ -10,8 +10,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LawrenceDeployCommand extends Command {
 
-	private int elbowStopPoint = 110;
-	private int shoulderStopPoint = 63;
+	private int elbowStopPoint = 86;
+	private int shoulderStopPoint = 44; //63;
+	private int lastElbow = 0;
 	
     public LawrenceDeployCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -27,14 +28,19 @@ public class LawrenceDeployCommand extends Command {
     	// start the motors moving
 		Robot.lawrenceSubsystem.jogShoulder(0.67);
 		Robot.lawrenceSubsystem.jogElbow(1.0); // unspool
+		lastElbow = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.lawrenceSubsystem.elbowEncoder.get() >= elbowStopPoint) {
+    	
+    	int thisElbow = Robot.lawrenceSubsystem.elbowEncoder.get();
+    	if ((thisElbow >= elbowStopPoint) ||
+    	    (thisElbow < lastElbow-5 )) {	
     		Robot.lawrenceSubsystem.stopElbow();
     	}
- 
+   		lastElbow = Math.max(thisElbow,lastElbow);
+    	
     	if (Robot.lawrenceSubsystem.shoulderEncoder.get() >= shoulderStopPoint) {
     		Robot.lawrenceSubsystem.stopShoulder();
     	}

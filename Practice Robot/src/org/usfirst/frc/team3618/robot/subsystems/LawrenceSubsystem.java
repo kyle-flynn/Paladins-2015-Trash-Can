@@ -24,7 +24,7 @@ public class LawrenceSubsystem extends Subsystem {
 	
 	// Lawrence cannot exceed 6' 6" (78 inches) at any time!
 
-	public static final double MAX_ELBOW_SPEED = 0.85;
+	public static final double MAX_ELBOW_SPEED = 0.78;
 	
 	public LawrenceSubsystem() {
 		elbowMotor = new Talon(RobotMap.LAWRENCE_ELBOW_MOTOR);
