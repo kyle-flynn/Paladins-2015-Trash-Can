@@ -9,7 +9,6 @@ import org.usfirst.frc.team3618.robot.subsystems.LeftPIDSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.ClampSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.RightPIDSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.ToteArmSubsystem;
-import org.usfirst.frc.team3618.robot.subsystems.TotePusherSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.VisionSubsystem;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -33,7 +32,6 @@ public class Robot extends IterativeRobot {
 	public static final ChassisSubsystem chassisSubsystem = new ChassisSubsystem();
 	public static final ClampSubsystem liftSubsystem = new ClampSubsystem();
 	public static final VisionSubsystem visionSubsystem = new VisionSubsystem();
-	public static final TotePusherSubsystem totePusherSubsystem = new TotePusherSubsystem();
 	public static final ToteArmSubsystem toteArmSubsystem = new ToteArmSubsystem();
 	public static final RightPIDSubsystem rightPIDSubsystem = new RightPIDSubsystem();
 	public static final LeftPIDSubsystem leftPIDSubsystem = new LeftPIDSubsystem();

@@ -60,7 +60,6 @@ public class ChassisSubsystem extends Subsystem {
     	double x = stick.getX();
     	double y = stick.getY();
     	double z = stick.getZ()*max; // always 1/2 again
-    	
     	myRobotDrive.mecanumDrive_Cartesian(x,y,z,Robot.chassisSubsystem.firstGyro.getAngle()); 	   	
     }
     public void DriveMe (Joystick stick, double limit) { 
