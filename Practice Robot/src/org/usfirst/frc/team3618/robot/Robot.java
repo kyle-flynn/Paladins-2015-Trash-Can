@@ -66,8 +66,8 @@ public class Robot extends IterativeRobot {
     	autoChooser = new SendableChooser();
     	autoChooser.addDefault("Drive Forward Only", 1);
     	autoChooser.addObject("One to Score", 2);
-    	autoChooser.addObject("2 Totes", 3);
-    	autoChooser.addObject("3 Totes", 4);
+    	autoChooser.addObject("3 Totes", 3);
+    	autoChooser.addObject("Lawrence", 4);
     	SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
 	
