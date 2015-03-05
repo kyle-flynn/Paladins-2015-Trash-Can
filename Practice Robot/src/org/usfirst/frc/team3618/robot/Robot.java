@@ -146,7 +146,10 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Gyro Angle", Robot.chassisSubsystem.firstGyro.getAngle());
         
         
-       
+       SmartDashboard.putNumber("Left Rear Encoder", Robot.chassisSubsystem.backLeft.get());
+       SmartDashboard.putNumber("Right Rear Encoder", Robot.chassisSubsystem.backRight.get());
+       SmartDashboard.putNumber("Left Front Encoder", Robot.chassisSubsystem.frontLeft.get());
+       SmartDashboard.putNumber("Right Front Encoder", Robot.chassisSubsystem.frontRight.get());
         
         
         int thisPress = oi.DrewsXBoxController.getPOV();
