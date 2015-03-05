@@ -33,7 +33,7 @@ public class RobotMap {
 	public static int BOTTOM_LEFT_LIMIT = 5;
 	public static int BOTTOM_RIGHT_LIMIT = 4;
 		//Encoders
-	public static int FRONT_LEFT_WHEEL_A =20;	
+	public static int FRONT_LEFT_WHEEL_A =20;
 	public static int FRONT_LEFT_WHEEL_B =19;
 	public static int FRONT_RIGHT_WHEEL_A = 14;
 	public static int FRONT_RIGHT_WHEEL_B =13;

@@ -145,6 +145,10 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Awful Right Encoder?", Robot.rightPIDSubsystem.isMyEncoderAwful);
         SmartDashboard.putNumber("Gyro Angle", Robot.chassisSubsystem.firstGyro.getAngle());
         
+        
+       
+        
+        
         int thisPress = oi.DrewsXBoxController.getPOV();
         SmartDashboard.putNumber("This press", thisPress);
         if(thisPress != lastPress) {

@@ -32,22 +32,21 @@ public class ChassisSubsystem extends Subsystem {
 	    	myRobotDrive.setInvertedMotor(MotorType.kFrontRight, true);
 	    	firstGyro.reset();
 	    	
-//	    	frontRight.reset();
-//	    	backRight.reset();
-//	    	frontLeft.reset();
-//	    	backLeft.reset();
+	    	frontRight.reset();
+	    	backRight.reset();
+	    	frontLeft.reset();
+	    	backLeft.reset();
 	    }
-	// public Encoder frontRight = new Encoder(0,1, false,Encoder.EncodingType.k4X); 
-	 
-	 //public Encoder backRight = new Encoder(2,3, false,Encoder.EncodingType.k4X);
-	// public Encoder frontLeft = new Encoder(3,5, false,Encoder.EncodingType.k4X);
-	// public Encoder backLeft = new Encoder(6,7, false,Encoder.EncodingType.k4X); 
+	public Encoder frontRight = new Encoder(RobotMap.FRONT_RIGHT_WHEEL_A,RobotMap.FRONT_RIGHT_WHEEL_B, false,Encoder.EncodingType.k4X);  
+	public Encoder backRight = new Encoder(RobotMap.REAR_RIGHT_WHEEL_A,RobotMap.REAR_RIGHT_WHEEL_B, false,Encoder.EncodingType.k4X);
+	public Encoder frontLeft = new Encoder(RobotMap.FRONT_LEFT_WHEEL_A,RobotMap.FRONT_LEFT_WHEEL_B, false,Encoder.EncodingType.k4X);
+	public Encoder backLeft = new Encoder(RobotMap.REAR_LEFT_WHEEL_A,RobotMap.REAR_LEFT_WHEEL_B, false,Encoder.EncodingType.k4X); 
 	 
 	 public void resetEncoders() {
-		 //frontRight.reset();
-		 //backRight.reset();
-		 //frontLeft.reset();
-		 //backLeft.reset();
+		 frontRight.reset();
+		 backRight.reset();
+		 frontLeft.reset();
+		 backLeft.reset();
 	 }
 	 
     public void initDefaultCommand() {
