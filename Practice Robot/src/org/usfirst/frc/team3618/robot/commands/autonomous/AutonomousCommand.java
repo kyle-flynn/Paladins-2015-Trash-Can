@@ -40,7 +40,7 @@ public class AutonomousCommand extends CommandGroup {
     	else if (selection == 2){
     		addSequential(new ClampCommand());
     		addSequential(new MoveToLevelCommand(true));
-    		addSequential(new MoveToLevelCommand(true));
+    		addParallel(new MoveToLevelCommand(true));
     		//Might be an issue since we haven't gone down yet
     		addSequential(new AutonDriveCommand(0, .4, 90));
     		addSequential(new AutonDriveCommand(.5, 0), 2.5);
