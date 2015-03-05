@@ -88,6 +88,11 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("Left Rear Encoder", Robot.chassisSubsystem.backLeft.get());
+        SmartDashboard.putNumber("Right Rear Encoder", Robot.chassisSubsystem.backRight.get());
+        SmartDashboard.putNumber("Left Front Encoder", Robot.chassisSubsystem.frontLeft.get());
+        SmartDashboard.putNumber("Right Front Encoder", Robot.chassisSubsystem.frontRight.get());
+        
     }
 
     public void teleopInit() {
@@ -150,7 +155,7 @@ public class Robot extends IterativeRobot {
        SmartDashboard.putNumber("Right Rear Encoder", Robot.chassisSubsystem.backRight.get());
        SmartDashboard.putNumber("Left Front Encoder", Robot.chassisSubsystem.frontLeft.get());
        SmartDashboard.putNumber("Right Front Encoder", Robot.chassisSubsystem.frontRight.get());
-        
+       
         
         int thisPress = oi.DrewsXBoxController.getPOV();
         SmartDashboard.putNumber("This press", thisPress);

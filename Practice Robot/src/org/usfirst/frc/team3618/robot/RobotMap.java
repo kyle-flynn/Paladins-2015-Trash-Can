@@ -35,12 +35,13 @@ public class RobotMap {
 		//Encoders
 	public static int FRONT_LEFT_WHEEL_A =20;
 	public static int FRONT_LEFT_WHEEL_B =19;
-	public static int FRONT_RIGHT_WHEEL_A = 14;
-	public static int FRONT_RIGHT_WHEEL_B =13;
+	public static int FRONT_RIGHT_WHEEL_A = 13;
+	public static int FRONT_RIGHT_WHEEL_B =14;
 	public static int REAR_LEFT_WHEEL_A = 18;  
 	public static int REAR_LEFT_WHEEL_B = 17;
-	public static int REAR_RIGHT_WHEEL_A = 16;
-	public static int REAR_RIGHT_WHEEL_B = 15;
+	//RightRear switched A and B so that the encoder is forward
+	public static int REAR_RIGHT_WHEEL_A = 15;
+	public static int REAR_RIGHT_WHEEL_B = 16;
 	public static int LAWRENCE_SHOULDER_A = 7;
 	public static int LAWRENCE_SHOULDER_B = 6;
 	public static int LAWRENCE_ELBOW_A = 9;
