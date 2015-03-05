@@ -77,10 +77,18 @@ public class ChassisSubsystem extends Subsystem {
     public void StopMe () {
     	myRobotDrive.drive(0, 0);
     }
-
-    	
     
+    public double getEncoders(){
+    	return (frontRight.get()+frontLeft.get()+backRight.get()+backLeft.get())/4;
+    }
 
-	}
+    public double getTicksFromFeet(double distance){
+		return RobotMap.ENCODER_PULSES_PER_REVOLUTION/(Math.PI*(RobotMap.DRIVE_WHEEL_DIAMETER_FEET/2)) * distance;
+    	
+    }
+    public double getFeetFromTicks(double distance){
+    	return ((Math.PI*(RobotMap.DRIVE_WHEEL_DIAMETER_FEET/2))/RobotMap.ENCODER_PULSES_PER_REVOLUTION)*distance;
+    }
+}
 
 

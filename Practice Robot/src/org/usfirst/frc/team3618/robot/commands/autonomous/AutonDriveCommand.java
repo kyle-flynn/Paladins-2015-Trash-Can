@@ -12,12 +12,13 @@ public class AutonDriveCommand extends Command {
 	private double speed;
 	private double rotation;
 	private double angle;
-	
+	private double distance;
 	
     public AutonDriveCommand(double speed, double rotation) {
     	this.speed = speed;
     	this.rotation = rotation;
     	this.angle = 0;
+    	this.distance = 0;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassisSubsystem);
@@ -27,6 +28,17 @@ public class AutonDriveCommand extends Command {
     	this.speed = speed;
     	this.rotation = rotation;
     	this.angle = angle;
+    	this.distance = 0;
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.chassisSubsystem);
+    }
+
+    public AutonDriveCommand(double speed, double rotation, double angle, double distance) {
+    	this.speed = speed;
+    	this.rotation = rotation;
+    	this.angle = angle;
+    	this.distance = distance;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassisSubsystem);
@@ -35,7 +47,7 @@ public class AutonDriveCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.chassisSubsystem.firstGyro.reset();
-    	
+    	Robot.chassisSubsystem.resetEncoders();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,7 +57,10 @@ public class AutonDriveCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(angle == 0) {
+    	if (distance != 0){
+    		return Robot.chassisSubsystem.getFeetFromTicks(Robot.chassisSubsystem.getEncoders())>distance;
+    	}
+    	else if (angle == 0) {
     		return false;
     	}else {
     		return angle == Robot.chassisSubsystem.firstGyro.getAngle();
