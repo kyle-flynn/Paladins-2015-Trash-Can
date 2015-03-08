@@ -53,7 +53,7 @@ public class RobotMap {
 	
 	
 	public static final double DRIVE_WHEEL_DIAMETER_FEET  = 0.5;
-    public static final double MOTOR_TO_WHEEL_GEAR_RATIO  = 1/1;
+    public static final double MOTOR_TO_WHEEL_GEAR_RATIO  = 0.773;
     public static final int ENCODER_PULSES_PER_REVOLUTION = 250;
 		
 }

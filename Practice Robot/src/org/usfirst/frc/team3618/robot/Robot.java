@@ -65,9 +65,10 @@ public class Robot extends IterativeRobot {
     	
     	autoChooser = new SendableChooser();
     	autoChooser.addDefault("Drive Forward Only", 1);
-    	autoChooser.addObject("One to Score", 2);
-    	autoChooser.addObject("3 Totes", 3);
-    	autoChooser.addObject("Lawrence", 4);
+    	autoChooser.addObject("1 Tote and score", 2);
+    	autoChooser.addObject("2 Totes and score", 3);
+    	autoChooser.addObject("3 Totes and score", 4);
+    	autoChooser.addObject("Lawrence", 5);
     	SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
 	
@@ -79,7 +80,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
     	autonomousCommand = new AutonomousCommand((int) autoChooser.getSelected());
     	autonomousCommand.start();
-    	
+    	SmartDashboard.putBoolean("autonomous", true);
      
     }
 
@@ -92,13 +93,20 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Right Rear Encoder", Robot.chassisSubsystem.backRight.get());
         SmartDashboard.putNumber("Left Front Encoder", Robot.chassisSubsystem.frontLeft.get());
         SmartDashboard.putNumber("Right Front Encoder", Robot.chassisSubsystem.frontRight.get());
-        
+        SmartDashboard.putBoolean("Awful Left Encoder?", Robot.leftPIDSubsystem.isMyEncoderAwful);
+        SmartDashboard.putBoolean("Awful Right Encoder?", Robot.rightPIDSubsystem.isMyEncoderAwful);
+        SmartDashboard.putNumber("Gyro Angle", Robot.chassisSubsystem.firstGyro.getAngle());
+        SmartDashboard.putNumber("PID Current Level", currentLevel);
+        SmartDashboard.putNumber("PID Setpoint", leftPIDSubsystem.getSetpoint());
+		SmartDashboard.putNumber("Drive Encoder Distance (ft)", Robot.chassisSubsystem.getFeetFromTicks(Robot.chassisSubsystem.getEncoders()));
+
     }
 
     public void teleopInit() {
 //		Compressor c = new Compressor();
 //		
 //		c.stop();
+    	SmartDashboard.putBoolean("autonomous", false);
     }
 
     /**
@@ -106,7 +114,7 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
+    	SmartDashboard.putBoolean("autonomous", false);
     }
 
     /**

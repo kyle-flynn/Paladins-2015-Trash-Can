@@ -23,7 +23,7 @@ public class EncoderDFdistanceCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.chassisSubsystem.DriveMe(0.25f, 0.0f);
+        //Robot.chassisSubsystem.DriveMe(0.25f, 0.0f);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,23 +1,19 @@
-package org.usfirst.frc.team3618.robot.commands;
-
-import org.usfirst.frc.team3618.robot.Robot;
+package org.usfirst.frc.team3618.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ClampCommand extends Command {
+public class TestWaitCommand extends Command {
 
-    public ClampCommand() {
+    public TestWaitCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.liftSubsystem);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.liftSubsystem.clamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -26,7 +22,7 @@ public class ClampCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

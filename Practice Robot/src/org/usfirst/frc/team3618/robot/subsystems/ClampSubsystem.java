@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ClampSubsystem extends Subsystem {
     
-	
 	DoubleSolenoid clamp = new DoubleSolenoid(RobotMap.CLAMP_OPEN,RobotMap.CLAMP_CLOSED);
 	
 	    // Put methods for controlling this subsystem

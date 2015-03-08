@@ -18,6 +18,7 @@ public class MoveToLevelCommand extends Command {
 	
 
 	private boolean goUp;
+	private int level;
 	
 	//Level 0 is fully down
 	//Level 1 is 2 inches up (first tote just off of floor), 
@@ -27,20 +28,27 @@ public class MoveToLevelCommand extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	goUp = increment;
-    	
+    	level = -1;
     	requires(Robot.rightPIDSubsystem);
     	requires(Robot.leftPIDSubsystem);
     }
 
+    public MoveToLevelCommand(int level) {
+    	Robot.currentLevel = level;
+    	this.level = level;
+    }
+    
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	if(goUp == true) {
-    		Robot.leftPIDSubsystem.levelUp();
-    	} else {
-    		Robot.leftPIDSubsystem.levelDown();
+    	if(level == -1) {
+	    	if(goUp == true) {
+	    		Robot.leftPIDSubsystem.levelUp();
+	    	} else {
+	    		Robot.leftPIDSubsystem.levelDown();
+	    	}
     	}
-    	    	
+	    	
     	Robot.rightPIDSubsystem.setSetpoint(countsAtLevel(Robot.currentLevel));
     	Robot.leftPIDSubsystem.setSetpoint(countsAtLevel(Robot.currentLevel));
     	Robot.rightPIDSubsystem.enable();

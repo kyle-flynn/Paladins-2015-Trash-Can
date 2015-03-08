@@ -23,7 +23,7 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.oi.toggleZAxis.get() == true) {
-    		Robot.chassisSubsystem.DriveMe(Robot.oi.stick, 0.75);
+    		Robot.chassisSubsystem.DriveMe(Robot.oi.stick, 0.7);
     	} else {
     		Robot.chassisSubsystem.DriveMe(Robot.oi.stick);
     	}

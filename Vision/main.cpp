@@ -182,6 +182,9 @@ int main(int argc, const char* argv[])
 	struct timespec start, end;
 	clock_gettime(CLOCK_REALTIME, &lastweb); // initial value of 'now'
 
+	int picFrame = 0;
+	char filename[50];
+
 	//run loop forever
 	while (true)
 	{
@@ -199,7 +202,11 @@ int main(int argc, const char* argv[])
 			{
 				frame.copyTo(img);
 				pthread_mutex_unlock(&frameMutex);
-
+				if(table->GetBoolean("autonomous")) {
+					picFrame++;
+					sprintf(filename, "frames/pic_%d.jpg", picFrame);
+					imwrite(filename,img);
+				}
 				thresholded = ThresholdImage(img);
 
 				//Lock Targets and determine goals
@@ -646,7 +653,6 @@ void *VideoCap(void *args)
 		clock_gettime(CLOCK_REALTIME, &start);
 
 		cv::VideoCapture vcap;
-
 
 		// For IP cam this works on a AXIS M1013
 		// For USB cam this works on Microsoft HD 3000
