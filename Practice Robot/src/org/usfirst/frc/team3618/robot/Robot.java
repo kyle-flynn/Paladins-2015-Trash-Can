@@ -2,6 +2,7 @@
 package org.usfirst.frc.team3618.robot;
 
 import org.usfirst.frc.team3618.robot.commands.MoveToLevelCommand;
+import org.usfirst.frc.team3618.robot.commands.TestCommand;
 import org.usfirst.frc.team3618.robot.commands.autonomous.AutonomousCommand;
 import org.usfirst.frc.team3618.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team3618.robot.subsystems.LawrenceSubsystem;
@@ -49,6 +50,7 @@ public class Robot extends IterativeRobot {
 	
 	private SendableChooser autoChooser;
 	private Command autonomousCommand;
+	private Command testCommand;
 	
 	
     /**
@@ -185,5 +187,9 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        testCommand = new TestCommand();
+    	testCommand.start();
+    	             
+
     }
 }

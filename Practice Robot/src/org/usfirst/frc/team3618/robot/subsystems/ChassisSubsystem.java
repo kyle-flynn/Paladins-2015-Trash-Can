@@ -22,7 +22,7 @@ public class ChassisSubsystem extends Subsystem {
 											  RobotMap.RIGHT_REAR_DRIVE_MOTOR);
 	public Gyro firstGyro = new Gyro(0);
 	
-	private double Kp = 0.09;
+	
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -30,7 +30,6 @@ public class ChassisSubsystem extends Subsystem {
 	 public ChassisSubsystem() {
 	    	myRobotDrive.setInvertedMotor(MotorType.kRearRight, true);
 	    	myRobotDrive.setInvertedMotor(MotorType.kFrontRight, true);
-	    	firstGyro.initGyro();
 	    	firstGyro.reset();
 	    	
 	    	frontRight.reset();
@@ -60,7 +59,7 @@ public class ChassisSubsystem extends Subsystem {
     	double x = stick.getX();
     	double y = stick.getY();
     	double z = stick.getZ()*max; // always 1/2 again
-    	myRobotDrive.mecanumDrive_Cartesian(x,y,z,0); 	   	
+    	myRobotDrive.mecanumDrive_Cartesian(x,y,z,Robot.chassisSubsystem.firstGyro.getAngle()); 	   	
     }
     public void DriveMe (Joystick stick, double limit) { 
     	double max = 0.75;
@@ -68,49 +67,32 @@ public class ChassisSubsystem extends Subsystem {
     	double y = stick.getY();
     	double z = stick.getZ()*max*limit; // always 1/2 again
     	
-    	myRobotDrive.mecanumDrive_Cartesian(x,y,z,0); 	
+    	myRobotDrive.mecanumDrive_Cartesian(x,y,z,Robot.chassisSubsystem.firstGyro.getAngle()); 	   	
     }
-    
-    public void AutoDrive(double speed, double direction) {
-    	myRobotDrive.mecanumDrive_Polar(speed, direction, -firstGyro.getAngle()*Kp);
+    public void DriveMe(double speed, double rotation) {
+    	myRobotDrive.mecanumDrive_Cartesian(0,-speed,0,rotation); 	   	
     }
+        
     
     public void StopMe () {
     	myRobotDrive.drive(0, 0);
     }
     
     public double getEncoders(){
-    	double avg = (Math.abs(frontRight.get())+Math.abs(frontLeft.get())+Math.abs(backRight.get())+Math.abs(backLeft.get()))/4;
-    	int divisor = 4;
-    	if (Math.abs(frontRight.get()) / avg < 0.2)
-    		divisor--;
-    	if (Math.abs(frontLeft.get()) / avg < 0.2)
-    		divisor--;
-    	if (Math.abs(backRight.get()) / avg < 0.2)
-    		divisor--;
-    	if (Math.abs(backLeft.get()) / avg < 0.2)
-    		divisor--;
-    	if (divisor > 0)
-    		return (avg*4)/divisor;
-    	else
-    		return 0;
+    	return (frontRight.get()+frontLeft.get()+backRight.get()+backLeft.get())/4;
     }
 
     public double getTicksFromFeet(double distance){
-		return (RobotMap.ENCODER_PULSES_PER_REVOLUTION/RobotMap.MOTOR_TO_WHEEL_GEAR_RATIO)/(Math.PI*RobotMap.DRIVE_WHEEL_DIAMETER_FEET) * distance;
+		return RobotMap.ENCODER_PULSES_PER_REVOLUTION/(Math.PI*(RobotMap.DRIVE_WHEEL_DIAMETER_FEET/2)) * distance;
     	
     }
     public double getFeetFromTicks(double distance){
-    	return ((Math.PI*RobotMap.DRIVE_WHEEL_DIAMETER_FEET)/RobotMap.ENCODER_PULSES_PER_REVOLUTION)*distance*RobotMap.MOTOR_TO_WHEEL_GEAR_RATIO;
+    	return ((Math.PI*(RobotMap.DRIVE_WHEEL_DIAMETER_FEET/2))/RobotMap.ENCODER_PULSES_PER_REVOLUTION)*distance;
+    }
+    public void TestDriveMe(double leftSpeed, double rightSpeed){
+    	myRobotDrive.tankDrive(leftSpeed, rightSpeed);
     }
     
-    public double accel(double speed, double time, double ramp) {
-    	double curSpeed = (speed*time)/ramp;
-    	if(curSpeed >= speed) {
-    		curSpeed = speed;
-    	}
-		return curSpeed;   
-    }
     
 }
 
