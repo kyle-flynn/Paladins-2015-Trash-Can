@@ -24,8 +24,6 @@ public class TestWaitCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.oi.DrewsXBoxController.getRawButton(1))
-    		return true;
         return false;
     }
 

@@ -22,7 +22,8 @@ public class TestLiftCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.
+    	Robot.leftPIDSubsystem.bypassPIDJog(.25*Robot.leftPIDSubsystem.upSpeed);
+    	Robot.rightPIDSubsystem.bypassPIDJog(.25*Robot.rightPIDSubsystem.upSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -34,8 +35,8 @@ public class TestLiftCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.rightPIDSubsystem.disable();
-    	Robot.leftPIDSubsystem.disable();
+    	Robot.rightPIDSubsystem.stop();
+    	Robot.leftPIDSubsystem.stop();
     }
 
     // Called when another command which requires one or more of the same

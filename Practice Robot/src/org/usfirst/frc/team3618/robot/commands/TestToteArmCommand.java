@@ -23,12 +23,16 @@ public class TestToteArmCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.toteArmSubsystem.leftToteArmDown();
+    	///Some sort of wait
+    	//TODO: How do I wait?
+    	Robot.toteArmSubsystem.leftToteArmUp();
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
+        //TODO: is this okay because it will have already run up and down once?
     }
 
     // Called once after isFinished returns true
