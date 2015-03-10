@@ -22,7 +22,7 @@ public class ChassisSubsystem extends Subsystem {
 											  RobotMap.RIGHT_REAR_DRIVE_MOTOR);
 	public Gyro firstGyro = new Gyro(0);
 	
-	
+	public double Kp = 0.09;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -69,6 +69,11 @@ public class ChassisSubsystem extends Subsystem {
     	
     	myRobotDrive.mecanumDrive_Cartesian(x,y,z,Robot.chassisSubsystem.firstGyro.getAngle()); 	   	
     }
+    
+    public void AutoDrive(double speed, double angle) {
+    	myRobotDrive.mecanumDrive_Polar(speed, angle, -firstGyro.getAngle() * Kp);
+    }
+    
     public void DriveMe(double speed, double rotation) {
     	myRobotDrive.mecanumDrive_Cartesian(0,-speed,0,rotation); 	   	
     }
@@ -93,6 +98,13 @@ public class ChassisSubsystem extends Subsystem {
     	myRobotDrive.tankDrive(leftSpeed, rightSpeed);
     }
     
+    public double accel(double speed, double time, double ramp) {
+    	double accel = (speed*time)/ramp;
+    	if(accel >= speed) {
+    		accel = speed;
+    	}
+    	return accel;
+    }
     
 }
 
