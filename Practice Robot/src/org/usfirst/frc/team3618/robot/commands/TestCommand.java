@@ -32,6 +32,9 @@ public class TestCommand extends CommandGroup {
          addSequential(new TestTurnCommand());
          addSequential(new SelfTestWaitCommand());
          
+         addSequential(new TestSideDriveCommand());
+         addSequential(new SelfTestWaitCommand());         
+         
          addSequential(new TestClampCommand());
          addSequential(new SelfTestWaitCommand());
          

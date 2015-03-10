@@ -77,8 +77,7 @@ public class ChassisSubsystem extends Subsystem {
     public void DriveMe(double speed, double rotation) {
     	myRobotDrive.mecanumDrive_Cartesian(0,-speed,0,rotation); 	   	
     }
-        
-    
+            
     public void StopMe () {
     	myRobotDrive.drive(0, 0);
     }
@@ -96,6 +95,11 @@ public class ChassisSubsystem extends Subsystem {
     }
     public void TestDriveMe(double leftSpeed, double rightSpeed){
     	myRobotDrive.tankDrive(leftSpeed, rightSpeed);
+    	
+    }
+    
+    public void TestDriveMeSideways(){
+    	myRobotDrive.mecanumDrive_Cartesian(.2,0,0,0);
     }
     
     public double accel(double speed, double time, double ramp) {
