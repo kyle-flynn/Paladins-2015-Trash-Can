@@ -7,13 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TestToteArmCommand extends Command {
+public class SelfTestWaitCommand extends Command {
 
-    public TestToteArmCommand() {
+    public SelfTestWaitCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-
-    	requires(Robot.toteArmSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -22,17 +20,13 @@ public class TestToteArmCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.toteArmSubsystem.leftToteArmDown();
-    	///Some sort of wait
-    	//TODO: How do I wait?
-    	Robot.toteArmSubsystem.leftToteArmUp();
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if(Robot.oi.DrewsXBoxController.getRawButton(1))
+    		return true;
         return false;
-        //TODO: is this okay because it will have already run up and down once?
     }
 
     // Called once after isFinished returns true

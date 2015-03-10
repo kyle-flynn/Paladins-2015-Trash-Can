@@ -30,19 +30,19 @@ public class TestCommand extends CommandGroup {
     	 addSequential(new TestWaitCommand());
     	 
          addSequential(new TestTurnCommand());
-         addSequential(new TestWaitCommand());
+         addSequential(new SelfTestWaitCommand());
          
          addSequential(new TestClampCommand());
-         addSequential(new TestWaitCommand());
+         addSequential(new SelfTestWaitCommand());
          
          addSequential(new TestUnclampCommand());
-         addSequential(new TestWaitCommand());
+         addSequential(new SelfTestWaitCommand());
          
          addSequential(new TestToteArmCommand());
-         addSequential(new TestWaitCommand());
+         addSequential(new SelfTestWaitCommand());
          
          addSequential(new TestLiftCommand());
-         addSequential(new TestWaitCommand());
+         addSequential(new SelfTestWaitCommand());
          
          addSequential(new TestLiftDownCommand());
          end();  
