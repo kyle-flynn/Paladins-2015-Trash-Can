@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3618.robot.commands;
 
+import org.usfirst.frc.team3618.robot.commands.autonomous.TestWaitCommand;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -25,7 +27,24 @@ public class TestCommand extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	 addSequential(new TestDriveCommand());
+    	 addSequential(new TestWaitCommand());
+    	 
          addSequential(new TestTurnCommand());
+         addSequential(new TestWaitCommand());
+         
+         addSequential(new TestClampCommand());
+         addSequential(new TestWaitCommand());
+         
+         addSequential(new TestUnclampCommand());
+         addSequential(new TestWaitCommand());
+         
+         addSequential(new TestToteArmCommand());
+         addSequential(new TestWaitCommand());
+         
+         addSequential(new TestLiftCommand());
+         addSequential(new TestWaitCommand());
+         
+         addSequential(new TestLiftDownCommand());
          end();  
     }
 }

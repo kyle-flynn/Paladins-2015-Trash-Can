@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3618.robot.commands.autonomous;
+package org.usfirst.frc.team3618.robot.commands;
 
 import org.usfirst.frc.team3618.robot.Robot;
 
@@ -7,11 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TestWaitCommand extends Command {
+public class TestLiftCommand extends Command {
 
-	public TestWaitCommand() {
+    public TestLiftCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.rightPIDSubsystem);
+    	requires(Robot.leftPIDSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -20,21 +22,25 @@ public class TestWaitCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.oi.DrewsXBoxController.getRawButton(1))
+    	if(timeSinceInitialized() >= .5)
     		return true;
         return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.rightPIDSubsystem.disable();
+    	Robot.leftPIDSubsystem.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

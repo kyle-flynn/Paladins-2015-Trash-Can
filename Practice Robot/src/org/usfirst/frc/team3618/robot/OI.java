@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	public Joystick stick = new Joystick (1);
-	
 	public Joystick DrewsXBoxController = new Joystick (2);
 
 //	public Button pushIn = new JoystickButton(stick2, 2);    Being removed from robot
